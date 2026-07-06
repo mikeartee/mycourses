@@ -1,0 +1,11 @@
+{
+  "id": "py-functions",
+  "title": "Organising Code with Functions",
+  "description": "Package logic into reusable functions, control their inputs and outputs, and pull in code from Python's standard library.",
+  "lessons": [
+    { "id": "defining-functions", "title": "Defining and Calling Functions", "type": "content", "markdownPath": "defining-functions.md" },
+    { "id": "arguments", "title": "Arguments, Defaults, and Keyword Arguments", "type": "content", "markdownPath": "arguments.md" },
+    { "id": "modules-imports", "title": "Modules, Imports, and the Standard Library", "type": "content", "markdownPath": "modules-imports.md" },
+    { "id": "quiz", "title": "Functions Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

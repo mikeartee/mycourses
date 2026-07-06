@@ -1,0 +1,9 @@
+{
+  "id": "m-basics",
+  "title": "Basics",
+  "description": "Basic module",
+  "lessons": [
+    { "id": "intro", "title": "Intro", "type": "content", "markdownPath": "intro.md" },
+    { "id": "quiz", "title": "Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

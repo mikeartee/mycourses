@@ -1,0 +1,56 @@
+{
+  "title": "Functions Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What is the difference between `print` and `return` in a function?",
+      "answers": [
+        { "id": "q1_a", "text": "return hands a value back to the caller to use; print only displays it", "correct": true },
+        { "id": "q1_b", "text": "They are identical", "correct": false },
+        { "id": "q1_c", "text": "return displays text; print hands a value back", "correct": false }
+      ],
+      "feedback": "return produces a usable value (and ends the function). print just shows text and hands back None."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Given `def greet(name, greeting=\"Hello\"):`, which call is INVALID?",
+      "answers": [
+        { "id": "q2_a", "text": "greet(greeting=\"Hi\")", "correct": true },
+        { "id": "q2_b", "text": "greet(\"Ada\")", "correct": false },
+        { "id": "q2_c", "text": "greet(\"Ada\", \"Hi\")", "correct": false }
+      ],
+      "feedback": "name has no default, so it must be supplied. greet(greeting=\"Hi\") omits name and errors."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Which import lets you call `sqrt(16)` directly (without a prefix)?",
+      "answers": [
+        { "id": "q3_a", "text": "from math import sqrt", "correct": true },
+        { "id": "q3_b", "text": "import math", "correct": false },
+        { "id": "q3_c", "text": "import sqrt from math", "correct": false }
+      ],
+      "feedback": "`from math import sqrt` brings the name in directly. `import math` needs math.sqrt(...). The third option isn't valid syntax."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which are good practices with function arguments?",
+      "answers": [
+        { "id": "q4_a", "text": "Use keyword arguments to make a call clearer", "correct": true },
+        { "id": "q4_b", "text": "Put parameters with defaults after those without", "correct": true },
+        { "id": "q4_c", "text": "Avoid mutable defaults like items=[]", "correct": true },
+        { "id": "q4_d", "text": "Always prefer *args/**kwargs over named parameters in your own code", "correct": false }
+      ],
+      "feedback": "Keyword args aid clarity, defaults go last, and mutable defaults are a trap. Explicit named params are usually clearer than *args/**kwargs in your own early code."
+    }
+  ]
+}

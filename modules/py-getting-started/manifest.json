@@ -1,0 +1,11 @@
+{
+  "id": "py-getting-started",
+  "title": "Getting Started with Python",
+  "description": "What Python is, how to run it, and how to store and label data with variables and basic types.",
+  "lessons": [
+    { "id": "what-is-python", "title": "What Python Is and Why It's Worth Learning", "type": "content", "markdownPath": "what-is-python.md" },
+    { "id": "running-python", "title": "Installing and Running Python", "type": "content", "markdownPath": "running-python.md" },
+    { "id": "variables-and-types", "title": "Variables and Basic Types", "type": "content", "markdownPath": "variables-and-types.md" },
+    { "id": "quiz", "title": "Getting Started Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

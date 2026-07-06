@@ -1,0 +1,40 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { loadCourses, resolveCourse, courseWelcomeHtml } from '../../../lib/content';
+import { href } from '../../../lib/url';
+
+export function getStaticPaths() {
+  return loadCourses().map((c) => ({ params: { course: c.id } }));
+}
+
+const { course: slug } = Astro.params;
+const { course, modules } = resolveCourse(slug!);
+const welcome = courseWelcomeHtml(course);
+---
+
+<Base title={course.title}>
+  <p class="crumbs"><a href={href('/')}>All courses</a></p>
+  <h1>{course.title}</h1>
+  {course.estimatedDuration && <p class="meta">{course.estimatedDuration}</p>}
+  {welcome && <article class="prose" set:html={welcome} />}
+
+  <h2>Modules</h2>
+  {
+    modules.map((m, mi) => (
+      <section class="module">
+        <h3>
+          {mi + 1}. {m.title}
+        </h3>
+        {m.description && <p>{m.description}</p>}
+        <ol class="lesson-list">
+          {m.lessons.map((l) => (
+            <li>
+              <a href={href(`/courses/${course.id}/${m.id}/${l.id}/`)}>{l.title}</a>
+              {l.type === 'quiz' && <span class="tag">quiz</span>}
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+</Base>

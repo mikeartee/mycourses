@@ -1,0 +1,56 @@
+{
+  "title": "Control Flow Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "How does Python know which lines are inside an `if` block?",
+      "answers": [
+        { "id": "q1_a", "text": "By their indentation", "correct": true },
+        { "id": "q1_b", "text": "By curly braces { }", "correct": false },
+        { "id": "q1_c", "text": "By a matching 'end' keyword", "correct": false }
+      ],
+      "feedback": "Python uses indentation (typically 4 spaces) to define blocks, not braces or end keywords."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What does `range(2, 6)` produce?",
+      "answers": [
+        { "id": "q2_a", "text": "2, 3, 4, 5", "correct": true },
+        { "id": "q2_b", "text": "2, 3, 4, 5, 6", "correct": false },
+        { "id": "q2_c", "text": "0, 1, 2, 3, 4, 5", "correct": false }
+      ],
+      "feedback": "range starts at the first number and stops just before the second: 2, 3, 4, 5."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Which comprehension gives the even numbers from 0 to 8?",
+      "answers": [
+        { "id": "q3_a", "text": "[n for n in range(10) if n % 2 == 0]", "correct": true },
+        { "id": "q3_b", "text": "[n for n in range(10)]", "correct": false },
+        { "id": "q3_c", "text": "[n % 2 for n in range(10)]", "correct": false }
+      ],
+      "feedback": "The `if n % 2 == 0` filter keeps only numbers divisible by 2."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which statements about loops are true?",
+      "answers": [
+        { "id": "q4_a", "text": "`break` exits the loop immediately", "correct": true },
+        { "id": "q4_b", "text": "`continue` skips to the next iteration", "correct": true },
+        { "id": "q4_c", "text": "A `while` loop can run forever if its condition never becomes false", "correct": true },
+        { "id": "q4_d", "text": "`for` loops can only count numbers, not iterate over lists", "correct": false }
+      ],
+      "feedback": "break stops, continue skips, and a while whose condition stays true loops forever. for loops iterate over any sequence, including lists."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+---
+import type { Quiz } from '../lib/content';
+
+interface Props {
+  quiz: Quiz;
+}
+const { quiz } = Astro.props;
+---
+
+<form class="quiz" id="quiz-form" data-quiz={JSON.stringify(quiz)}>
+  {
+    quiz.questions.map((q, qi) => (
+      <fieldset class="question" data-qid={q.id}>
+        <legend>
+          {qi + 1}. {q.question}
+        </legend>
+        {q.answers.map((a) => (
+          <label class="answer">
+            <input type={q.type === 'MULTIPLE_RESPONSE' ? 'checkbox' : 'radio'} name={q.id} value={a.id} />
+            <span>{a.text}</span>
+          </label>
+        ))}
+        <p class="feedback" data-qid={q.id} hidden />
+      </fieldset>
+    ))
+  }
+  <button type="submit">Check answers</button>
+  <div class="quiz-result" hidden></div>
+</form>
+
+<script>
+  import { gradeQuiz } from '../lib/quiz';
+
+  const form = document.getElementById('quiz-form') as HTMLFormElement | null;
+  if (form && form.dataset.quiz) {
+    const quiz = JSON.parse(form.dataset.quiz);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const responses: Record<string, string[]> = {};
+      for (const q of quiz.questions) {
+        const checked = form.querySelectorAll(`input[name="${q.id}"]:checked`);
+        responses[q.id] = Array.from(checked).map((i) => (i as HTMLInputElement).value);
+      }
+      const res = gradeQuiz(quiz, responses);
+      for (const r of res.results) {
+        const fs = form.querySelector(`fieldset[data-qid="${r.id}"]`);
+        const fb = form.querySelector(`.feedback[data-qid="${r.id}"]`) as HTMLElement | null;
+        if (fs) {
+          fs.classList.toggle('correct', r.correct);
+          fs.classList.toggle('incorrect', !r.correct);
+        }
+        if (fb) {
+          fb.hidden = false;
+          fb.textContent = (r.correct ? 'Correct. ' : 'Not quite. ') + (r.feedback ?? '');
+        }
+      }
+      const out = form.querySelector('.quiz-result') as HTMLElement | null;
+      if (out) {
+        out.hidden = false;
+        out.textContent = `Score: ${res.score}% (${res.correctCount}/${res.total}) - ${res.passed ? 'Passed' : 'Below passing (' + quiz.passingScore + '%)'}`;
+        out.classList.toggle('pass', res.passed);
+        out.classList.toggle('fail', !res.passed);
+      }
+    });
+  }
+</script>

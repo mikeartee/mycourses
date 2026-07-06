@@ -1,0 +1,8 @@
+{
+  "id": "learn-python",
+  "title": "Learn Python: From Zero to Confident",
+  "description": "A hands-on introduction to Python for complete beginners. Install it, understand variables and types, control the flow of a program, work with the core data structures, and organise code with functions.",
+  "estimatedDuration": "6-8 hours",
+  "welcomePath": "welcome.md",
+  "modules": ["py-getting-started", "py-control-flow", "py-data-structures", "py-functions"]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "py-control-flow",
+  "title": "Making Decisions and Repeating Work",
+  "description": "Use conditionals and loops to make programs react to data and repeat work without repeating yourself.",
+  "lessons": [
+    { "id": "conditionals", "title": "Conditionals: if, elif, and else", "type": "content", "markdownPath": "conditionals.md" },
+    { "id": "loops", "title": "Loops: for and while", "type": "content", "markdownPath": "loops.md" },
+    { "id": "comprehensions", "title": "List Comprehensions", "type": "content", "markdownPath": "comprehensions.md" },
+    { "id": "quiz", "title": "Control Flow Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadCourses } from '../lib/content';
+import { href } from '../lib/url';
+
+const courses = loadCourses();
+---
+
+<Base title="mycourses">
+  <h1>Courses</h1>
+  {courses.length === 0 && <p>No courses yet.</p>}
+  <ul class="course-list">
+    {
+      courses.map((c) => (
+        <li class="course-card">
+          <a class="course-title" href={href(`/courses/${c.id}/`)}>
+            {c.title}
+          </a>
+          {c.description && <p>{c.description}</p>}
+          {c.estimatedDuration && <span class="meta">{c.estimatedDuration}</span>}
+        </li>
+      ))
+    }
+  </ul>
+</Base>

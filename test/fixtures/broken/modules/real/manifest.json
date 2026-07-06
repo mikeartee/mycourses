@@ -1,0 +1,8 @@
+{
+  "id": "real",
+  "title": "Real",
+  "lessons": [
+    { "id": "l1", "title": "L1", "type": "content", "markdownPath": "gone.md" },
+    { "id": "q", "title": "Q", "type": "quiz", "quizPath": "badquiz.json" }
+  ]
+}

@@ -1,0 +1,59 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Quiz from '../../../../components/Quiz.astro';
+import { loadCourses, resolveCourse, lessonHtml, loadQuiz } from '../../../../lib/content';
+import { href } from '../../../../lib/url';
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const c of loadCourses()) {
+    const { modules } = resolveCourse(c.id);
+    const flat: { modId: string; modTitle: string; lessonId: string; lessonTitle: string }[] = [];
+    for (const m of modules) {
+      for (const l of m.lessons) {
+        flat.push({ modId: m.id, modTitle: m.title, lessonId: l.id, lessonTitle: l.title });
+      }
+    }
+    modules.forEach((m) => {
+      m.lessons.forEach((l) => {
+        const idx = flat.findIndex((f) => f.modId === m.id && f.lessonId === l.id);
+        const prev = idx > 0 ? flat[idx - 1] : null;
+        const next = idx < flat.length - 1 ? flat[idx + 1] : null;
+        paths.push({
+          params: { course: c.id, module: m.id, lesson: l.id },
+          props: {
+            courseId: c.id,
+            courseTitle: c.title,
+            moduleId: m.id,
+            moduleTitle: m.title,
+            lesson: l,
+            prev: prev ? { course: c.id, module: prev.modId, lesson: prev.lessonId, title: prev.lessonTitle } : null,
+            next: next ? { course: c.id, module: next.modId, lesson: next.lessonId, title: next.lessonTitle } : null,
+          },
+        });
+      });
+    });
+  }
+  return paths;
+}
+
+const { courseId, courseTitle, moduleId, moduleTitle, lesson, prev, next } = Astro.props;
+const html = lesson.type === 'content' ? lessonHtml(moduleId, lesson) : '';
+const quiz = lesson.type === 'quiz' ? loadQuiz(moduleId, lesson) : null;
+---
+
+<Base title={`${lesson.title} · ${courseTitle}`}>
+  <p class="crumbs">
+    <a href={href('/')}>All courses</a> /
+    <a href={href(`/courses/${courseId}/`)}>{courseTitle}</a> / {moduleTitle}
+  </p>
+  <h1>{lesson.title}</h1>
+
+  {lesson.type === 'content' && <article class="prose" set:html={html} />}
+  {lesson.type === 'quiz' && quiz && <Quiz quiz={quiz} />}
+
+  <nav class="lesson-nav">
+    {prev && <a class="prev" href={href(`/courses/${prev.course}/${prev.module}/${prev.lesson}/`)}>← {prev.title}</a>}
+    {next && <a class="next" href={href(`/courses/${next.course}/${next.module}/${next.lesson}/`)}>{next.title} →</a>}
+  </nav>
+</Base>

@@ -1,0 +1,11 @@
+{
+  "id": "py-data-structures",
+  "title": "Working with Data",
+  "description": "Store and organise collections of values with lists, tuples, dictionaries, and sets, and handle text with confidence.",
+  "lessons": [
+    { "id": "lists-and-tuples", "title": "Lists and Tuples", "type": "content", "markdownPath": "lists-and-tuples.md" },
+    { "id": "dicts-and-sets", "title": "Dictionaries and Sets", "type": "content", "markdownPath": "dicts-and-sets.md" },
+    { "id": "strings-in-depth", "title": "Working with Strings", "type": "content", "markdownPath": "strings-in-depth.md" },
+    { "id": "quiz", "title": "Data Structures Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

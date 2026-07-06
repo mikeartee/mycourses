@@ -1,0 +1,56 @@
+{
+  "title": "Data Structures Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Given nums = [10, 20, 30, 40], what is nums[1:3]?",
+      "answers": [
+        { "id": "q1_a", "text": "[20, 30]", "correct": true },
+        { "id": "q1_b", "text": "[20, 30, 40]", "correct": false },
+        { "id": "q1_c", "text": "[10, 20, 30]", "correct": false }
+      ],
+      "feedback": "Slicing is start:stop with stop excluded, so indexes 1 and 2: [20, 30]."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "You have data where each value has a label (name, age, city). Which structure fits best?",
+      "answers": [
+        { "id": "q2_a", "text": "A dictionary", "correct": true },
+        { "id": "q2_b", "text": "A set", "correct": false },
+        { "id": "q2_c", "text": "A tuple", "correct": false }
+      ],
+      "feedback": "A dict maps labels (keys) to values, exactly this shape of data."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What is the result of set([1, 1, 2, 3, 3])?",
+      "answers": [
+        { "id": "q3_a", "text": "{1, 2, 3}", "correct": true },
+        { "id": "q3_b", "text": "[1, 1, 2, 3, 3]", "correct": false },
+        { "id": "q3_c", "text": "{1, 1, 2, 3, 3}", "correct": false }
+      ],
+      "feedback": "A set keeps only unique values, so duplicates are dropped."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which statements are true about strings?",
+      "answers": [
+        { "id": "q4_a", "text": "They are immutable, methods return a new string", "correct": true },
+        { "id": "q4_b", "text": "You can slice them like lists, e.g. word[0:3]", "correct": true },
+        { "id": "q4_c", "text": "\"a,b\".split(\",\") returns [\"a\", \"b\"]", "correct": true },
+        { "id": "q4_d", "text": "name[0] = \"X\" changes the first letter in place", "correct": false }
+      ],
+      "feedback": "Strings are immutable, so you can't assign to an index; the other three are correct."
+    }
+  ]
+}

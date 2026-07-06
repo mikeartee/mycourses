@@ -1,0 +1,8 @@
+{
+  "id": "demo",
+  "title": "Demo",
+  "description": "A demo course",
+  "estimatedDuration": "1 hour",
+  "welcomePath": "welcome.md",
+  "modules": ["m-basics"]
+}
