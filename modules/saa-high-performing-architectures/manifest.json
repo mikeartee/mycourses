@@ -1,0 +1,11 @@
+{
+  "id": "saa-high-performing-architectures",
+  "title": "Domain 3: Design High-Performing Architectures (24%)",
+  "description": "Choose the right compute, storage, and database for the workload, and use caching and content delivery to keep things fast at scale.",
+  "lessons": [
+    { "id": "scalable-compute", "title": "Scalable and High-Performing Compute", "type": "content", "markdownPath": "scalable-compute.md" },
+    { "id": "storage-and-databases", "title": "Choosing Storage and Databases", "type": "content", "markdownPath": "storage-and-databases.md" },
+    { "id": "caching-and-delivery", "title": "Caching and Content Delivery", "type": "content", "markdownPath": "caching-and-delivery.md" },
+    { "id": "quiz", "title": "High-Performing Architectures Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

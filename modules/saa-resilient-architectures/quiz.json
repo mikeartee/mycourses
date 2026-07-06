@@ -1,0 +1,68 @@
+{
+  "title": "Resilient Architectures Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What is the single most important principle for high availability on AWS?",
+      "answers": [
+        { "id": "q1_a", "text": "Deploy across multiple Availability Zones", "correct": true },
+        { "id": "q1_b", "text": "Use the largest available instance type", "correct": false },
+        { "id": "q1_c", "text": "Keep everything in one Availability Zone for low latency", "correct": false }
+      ],
+      "feedback": "Spreading across multiple AZs removes the single-data-centre point of failure, the core HA principle."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A web tier hands off slow background jobs so it can respond immediately, and workers process them when ready. Which service fits best?",
+      "answers": [
+        { "id": "q2_a", "text": "Amazon SQS", "correct": true },
+        { "id": "q2_b", "text": "Amazon Route 53", "correct": false },
+        { "id": "q2_c", "text": "AWS WAF", "correct": false }
+      ],
+      "feedback": "SQS buffers work in a queue so producers and consumers scale independently and spikes don't overwhelm the workers."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A workload must recover within minutes with almost no data loss, and budget is not a concern. Which DR strategy fits?",
+      "answers": [
+        { "id": "q3_a", "text": "Multi-site active-active", "correct": true },
+        { "id": "q3_b", "text": "Backup and restore", "correct": false },
+        { "id": "q3_c", "text": "Pilot light", "correct": false }
+      ],
+      "feedback": "The lowest RTO/RPO comes from running full production in more than one Region (multi-site), at the highest cost."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_CHOICE",
+      "question": "You need one published message to be delivered to several independent subscribers at once. Which service?",
+      "answers": [
+        { "id": "q4_a", "text": "Amazon SNS", "correct": true },
+        { "id": "q4_b", "text": "A single SQS queue", "correct": false },
+        { "id": "q4_c", "text": "Amazon EBS", "correct": false }
+      ],
+      "feedback": "SNS is publish/subscribe: publish once to a topic and it is pushed to all subscribers (a fan-out pattern)."
+    },
+    {
+      "id": "q5",
+      "questionNumber": 5,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which are true about RTO and RPO?",
+      "answers": [
+        { "id": "q5_a", "text": "RTO is how long you can be down before recovery", "correct": true },
+        { "id": "q5_b", "text": "RPO is how much data (measured in time) you can afford to lose", "correct": true },
+        { "id": "q5_c", "text": "A lower RTO generally costs more to achieve", "correct": true },
+        { "id": "q5_d", "text": "RPO and durability are the same thing", "correct": false }
+      ],
+      "feedback": "RTO = downtime tolerance, RPO = data-loss tolerance, and tighter targets cost more. Durability (data survival) is a separate concept."
+    }
+  ]
+}

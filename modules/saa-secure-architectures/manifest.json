@@ -1,0 +1,11 @@
+{
+  "id": "saa-secure-architectures",
+  "title": "Domain 1: Design Secure Architectures (30%)",
+  "description": "Secure access with IAM, protect data with encryption and key management, and secure networks with VPC controls. The heaviest domain on the exam.",
+  "lessons": [
+    { "id": "iam-and-access", "title": "Identity and Access: IAM", "type": "content", "markdownPath": "iam-and-access.md" },
+    { "id": "data-protection", "title": "Data Protection: Encryption and KMS", "type": "content", "markdownPath": "data-protection.md" },
+    { "id": "network-security", "title": "Network Security: VPC, Security Groups, and NACLs", "type": "content", "markdownPath": "network-security.md" },
+    { "id": "quiz", "title": "Secure Architectures Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

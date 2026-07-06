@@ -1,0 +1,44 @@
+{
+  "title": "Exam Tactics Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Two answer choices both technically work. How do you usually pick the best one?",
+      "answers": [
+        { "id": "q1_a", "text": "Match the answer to the question's priority word (cost, availability, performance, security, or least overhead)", "correct": true },
+        { "id": "q1_b", "text": "Always choose the newest-sounding service", "correct": false },
+        { "id": "q1_c", "text": "Always choose the cheapest option regardless of the requirement", "correct": false }
+      ],
+      "feedback": "The priority word tells you which Well-Architected pillar the question optimises for, and that breaks the tie."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "You're spending too long on a hard question. What's the best move?",
+      "answers": [
+        { "id": "q2_a", "text": "Flag it, make your best guess, and move on; return later", "correct": true },
+        { "id": "q2_b", "text": "Leave it blank to save time", "correct": false },
+        { "id": "q2_c", "text": "Spend as long as needed even if it costs you later questions", "correct": false }
+      ],
+      "feedback": "Flag and move on so you don't starve later questions. Never leave blanks, there's no penalty for guessing."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which are good exam-preparation practices?",
+      "answers": [
+        { "id": "q3_a", "text": "Take full-length timed practice exams and review every answer", "correct": true },
+        { "id": "q3_b", "text": "Get hands-on in a real AWS account using the Free Tier", "correct": true },
+        { "id": "q3_c", "text": "Prioritise the security domain, since it's weighted highest", "correct": true },
+        { "id": "q3_d", "text": "Memorise answers to a leaked question dump instead of understanding concepts", "correct": false }
+      ],
+      "feedback": "Timed practice, hands-on labs, and prioritising the heaviest domain all help. Relying on dumps doesn't build the reasoning the scenarios require."
+    }
+  ]
+}

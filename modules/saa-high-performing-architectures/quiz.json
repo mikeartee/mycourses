@@ -1,0 +1,67 @@
+{
+  "title": "High-Performing Architectures Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Several EC2 instances across AZs need to read and write the same set of files simultaneously. Which storage service fits?",
+      "answers": [
+        { "id": "q1_a", "text": "Amazon EFS", "correct": true },
+        { "id": "q1_b", "text": "Amazon EBS", "correct": false },
+        { "id": "q1_c", "text": "Instance store", "correct": false }
+      ],
+      "feedback": "EFS is a shared file system many instances can mount at once. EBS attaches to a single instance; instance store is ephemeral."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A read-heavy relational database is struggling under query load. Which change improves read performance?",
+      "answers": [
+        { "id": "q2_a", "text": "Add read replicas", "correct": true },
+        { "id": "q2_b", "text": "Enable Multi-AZ", "correct": false },
+        { "id": "q2_c", "text": "Switch to instance store", "correct": false }
+      ],
+      "feedback": "Read replicas offload read traffic. Multi-AZ is for availability/failover, not read scaling."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A global audience is downloading the same static images and videos with high latency. What helps most?",
+      "answers": [
+        { "id": "q3_a", "text": "Serve the content through Amazon CloudFront", "correct": true },
+        { "id": "q3_b", "text": "Move everything to a single larger EC2 instance", "correct": false },
+        { "id": "q3_c", "text": "Enable RDS Multi-AZ", "correct": false }
+      ],
+      "feedback": "CloudFront caches content at edge locations near users, cutting latency and offloading the origin."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_CHOICE",
+      "question": "You need microsecond read latency specifically for a DynamoDB table without rewriting the app. What do you add?",
+      "answers": [
+        { "id": "q4_a", "text": "DynamoDB Accelerator (DAX)", "correct": true },
+        { "id": "q4_b", "text": "Amazon Redshift", "correct": false },
+        { "id": "q4_c", "text": "An Application Load Balancer", "correct": false }
+      ],
+      "feedback": "DAX is the in-memory cache built specifically for DynamoDB."
+    },
+    {
+      "id": "q5",
+      "questionNumber": 5,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which compute choices reduce operational overhead by removing server management?",
+      "answers": [
+        { "id": "q5_a", "text": "AWS Lambda", "correct": true },
+        { "id": "q5_b", "text": "AWS Fargate", "correct": true },
+        { "id": "q5_c", "text": "Self-managed EC2 instances you patch yourself", "correct": false }
+      ],
+      "feedback": "Lambda (functions) and Fargate (serverless containers) remove host management. Self-managed EC2 keeps that burden with you."
+    }
+  ]
+}

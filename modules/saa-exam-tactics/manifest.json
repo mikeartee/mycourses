@@ -1,0 +1,10 @@
+{
+  "id": "saa-exam-tactics",
+  "title": "Exam Tactics and Next Steps",
+  "description": "How to read scenario questions, eliminate wrong answers, manage time, and put together a study plan for the weeks before the exam.",
+  "lessons": [
+    { "id": "answering-scenarios", "title": "Reading Scenarios and Eliminating Answers", "type": "content", "markdownPath": "answering-scenarios.md" },
+    { "id": "study-plan", "title": "A Study Plan and Resources", "type": "content", "markdownPath": "study-plan.md" },
+    { "id": "quiz", "title": "Exam Tactics Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

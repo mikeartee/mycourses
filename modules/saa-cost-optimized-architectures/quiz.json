@@ -1,0 +1,68 @@
+{
+  "title": "Cost-Optimized Architectures Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A batch data-processing job can be interrupted and restarted without harm, and you want the lowest possible compute cost. Which model fits?",
+      "answers": [
+        { "id": "q1_a", "text": "Spot Instances", "correct": true },
+        { "id": "q1_b", "text": "On-Demand Instances", "correct": false },
+        { "id": "q1_c", "text": "Dedicated Hosts", "correct": false }
+      ],
+      "feedback": "Spot offers the deepest discount for interruptible, fault-tolerant workloads like batch processing."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A database runs 24/7 and will for the next three years. What reduces its compute cost the most?",
+      "answers": [
+        { "id": "q2_a", "text": "A 3-year Reserved Instance or Savings Plan", "correct": true },
+        { "id": "q2_b", "text": "On-Demand pricing", "correct": false },
+        { "id": "q2_c", "text": "Spot Instances", "correct": false }
+      ],
+      "feedback": "Steady, always-on workloads are ideal for a 1- or 3-year commitment (RIs or Savings Plans) for large discounts."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Objects are accessed often for 30 days, then rarely. You want to cut storage cost automatically. What do you use?",
+      "answers": [
+        { "id": "q3_a", "text": "An S3 Lifecycle policy transitioning objects to a cheaper class", "correct": true },
+        { "id": "q3_b", "text": "Delete and re-upload the objects manually each month", "correct": false },
+        { "id": "q3_c", "text": "Move them to an EBS volume", "correct": false }
+      ],
+      "feedback": "Lifecycle rules automatically transition aging objects to cheaper classes (e.g. Standard-IA, then Glacier)."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_CHOICE",
+      "question": "You want an alert when monthly spend is forecast to exceed a set threshold. Which tool?",
+      "answers": [
+        { "id": "q4_a", "text": "AWS Budgets", "correct": true },
+        { "id": "q4_b", "text": "AWS Cost Explorer", "correct": false },
+        { "id": "q4_c", "text": "AWS Trusted Advisor", "correct": false }
+      ],
+      "feedback": "AWS Budgets sends alerts when actual or forecast spend crosses a threshold. Cost Explorer analyses; it doesn't alert."
+    },
+    {
+      "id": "q5",
+      "questionNumber": 5,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which help reduce or control cost?",
+      "answers": [
+        { "id": "q5_a", "text": "Deleting unattached EBS volumes and old snapshots", "correct": true },
+        { "id": "q5_b", "text": "Using CloudFront to reduce outbound data-transfer cost", "correct": true },
+        { "id": "q5_c", "text": "Applying cost allocation tags to attribute spend", "correct": true },
+        { "id": "q5_d", "text": "Running all workloads on Dedicated Hosts by default", "correct": false }
+      ],
+      "feedback": "Clean up idle storage, cut egress with CloudFront, and tag for attribution. Dedicated Hosts are the most expensive option, not a default."
+    }
+  ]
+}

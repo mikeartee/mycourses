@@ -1,0 +1,15 @@
+{
+  "id": "aws-saa-c03",
+  "title": "AWS Certified Solutions Architect - Associate (SAA-C03)",
+  "description": "A structured study course for the AWS Certified Solutions Architect - Associate exam (SAA-C03), organised around the four official exam domains and grounded in the AWS Well-Architected Framework.",
+  "estimatedDuration": "12-16 hours",
+  "welcomePath": "welcome.md",
+  "modules": [
+    "saa-exam-overview",
+    "saa-secure-architectures",
+    "saa-resilient-architectures",
+    "saa-high-performing-architectures",
+    "saa-cost-optimized-architectures",
+    "saa-exam-tactics"
+  ]
+}

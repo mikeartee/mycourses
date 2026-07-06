@@ -1,0 +1,56 @@
+{
+  "title": "Exam Overview Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What scaled score is needed to pass the SAA-C03 exam?",
+      "answers": [
+        { "id": "q1_a", "text": "720 out of 1000", "correct": true },
+        { "id": "q1_b", "text": "1000 out of 1000", "correct": false },
+        { "id": "q1_c", "text": "500 out of 1000", "correct": false }
+      ],
+      "feedback": "The exam is scored on a 100-1000 scale and you need 720 to pass."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Which domain carries the largest weighting?",
+      "answers": [
+        { "id": "q2_a", "text": "Design Secure Architectures (30%)", "correct": true },
+        { "id": "q2_b", "text": "Design Cost-Optimized Architectures (20%)", "correct": false },
+        { "id": "q2_c", "text": "Design High-Performing Architectures (24%)", "correct": false }
+      ],
+      "feedback": "Security is the heaviest domain at 30%, so it deserves the most study time."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "On a multiple-response question where two answers are correct, you select one correct and one incorrect answer. What do you score?",
+      "answers": [
+        { "id": "q3_a", "text": "Nothing - there is no partial credit", "correct": true },
+        { "id": "q3_b", "text": "Half a mark", "correct": false },
+        { "id": "q3_c", "text": "Full marks, because you got one right", "correct": false }
+      ],
+      "feedback": "Multiple-response questions require every correct answer and no incorrect ones; there is no partial credit."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which of these are pillars of the AWS Well-Architected Framework?",
+      "answers": [
+        { "id": "q4_a", "text": "Security", "correct": true },
+        { "id": "q4_b", "text": "Reliability", "correct": true },
+        { "id": "q4_c", "text": "Cost Optimization", "correct": true },
+        { "id": "q4_d", "text": "Marketing Reach", "correct": false }
+      ],
+      "feedback": "The pillars are Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, and Sustainability."
+    }
+  ]
+}

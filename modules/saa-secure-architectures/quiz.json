@@ -1,0 +1,68 @@
+{
+  "title": "Secure Architectures Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "An application on an EC2 instance needs to read from an S3 bucket. What is the recommended way to grant access?",
+      "answers": [
+        { "id": "q1_a", "text": "Attach an IAM role to the EC2 instance", "correct": true },
+        { "id": "q1_b", "text": "Store an IAM user's access keys in a file on the instance", "correct": false },
+        { "id": "q1_c", "text": "Make the bucket public", "correct": false }
+      ],
+      "feedback": "Use an IAM role so the instance gets automatically rotated temporary credentials, never embed long-lived access keys."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Which statement about security groups is correct?",
+      "answers": [
+        { "id": "q2_a", "text": "They are stateful: allowed inbound traffic has its return traffic automatically permitted", "correct": true },
+        { "id": "q2_b", "text": "They are stateless and evaluate numbered rules in order", "correct": false },
+        { "id": "q2_c", "text": "They support explicit deny rules", "correct": false }
+      ],
+      "feedback": "Security groups are stateful and allow-only. Stateless, numbered, allow+deny rules describe network ACLs."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Instances in a private subnet need to download OS updates from the internet but must not be reachable from the internet. What do you use?",
+      "answers": [
+        { "id": "q3_a", "text": "A NAT gateway", "correct": true },
+        { "id": "q3_b", "text": "An internet gateway attached directly to the private subnet", "correct": false },
+        { "id": "q3_c", "text": "A VPC peering connection", "correct": false }
+      ],
+      "feedback": "A NAT gateway allows outbound internet access from private subnets while blocking unsolicited inbound connections."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which approaches help protect data? (Choose all that apply.)",
+      "answers": [
+        { "id": "q4_a", "text": "Enable KMS encryption at rest on S3, EBS, and RDS", "correct": true },
+        { "id": "q4_b", "text": "Use TLS (HTTPS) for data in transit", "correct": true },
+        { "id": "q4_c", "text": "Store database passwords in AWS Secrets Manager with rotation", "correct": true },
+        { "id": "q4_d", "text": "Commit access keys to your Git repository for convenience", "correct": false }
+      ],
+      "feedback": "Encrypt at rest and in transit, and manage secrets in Secrets Manager. Committing keys to source control is a serious security risk."
+    },
+    {
+      "id": "q5",
+      "questionNumber": 5,
+      "type": "MULTIPLE_CHOICE",
+      "question": "You want EC2 instances to reach Amazon S3 without traffic leaving the AWS network. What do you use?",
+      "answers": [
+        { "id": "q5_a", "text": "A VPC gateway endpoint for S3", "correct": true },
+        { "id": "q5_b", "text": "A public IP on each instance", "correct": false },
+        { "id": "q5_c", "text": "AWS Shield Advanced", "correct": false }
+      ],
+      "feedback": "A VPC endpoint (gateway endpoint for S3/DynamoDB) provides private access to the service without using the public internet."
+    }
+  ]
+}
