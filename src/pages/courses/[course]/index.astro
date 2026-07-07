@@ -1,6 +1,8 @@
 ---
-import Base from '../../../layouts/Base.astro';
-import { loadCourses, resolveCourse, courseWelcomeHtml } from '../../../lib/content';
+import CourseShell from '../../../layouts/CourseShell.astro';
+import CourseSidebar from '../../../components/CourseSidebar.astro';
+import OnThisPage from '../../../components/OnThisPage.astro';
+import { loadCourses, resolveCourse, courseWelcomeContent } from '../../../lib/content';
 import { href } from '../../../lib/url';
 
 export function getStaticPaths() {
@@ -9,32 +11,31 @@ export function getStaticPaths() {
 
 const { course: slug } = Astro.params;
 const { course, modules } = resolveCourse(slug!);
-const welcome = courseWelcomeHtml(course);
+const welcome = courseWelcomeContent(course);
+const firstModule = modules[0];
+const firstLesson = firstModule?.lessons[0];
 ---
 
-<Base title={course.title}>
-  <p class="crumbs"><a href={href('/')}>All courses</a></p>
-  <h1>{course.title}</h1>
-  {course.estimatedDuration && <p class="meta">{course.estimatedDuration}</p>}
-  {welcome && <article class="prose" set:html={welcome} />}
+<CourseShell title={course.title}>
+  <CourseSidebar slot="sidebar" course={course} modules={modules} isWelcome={true} />
 
-  <h2>Modules</h2>
-  {
-    modules.map((m, mi) => (
-      <section class="module">
-        <h3>
-          {mi + 1}. {m.title}
-        </h3>
-        {m.description && <p>{m.description}</p>}
-        <ol class="lesson-list">
-          {m.lessons.map((l) => (
-            <li>
-              <a href={href(`/courses/${course.id}/${m.id}/${l.id}/`)}>{l.title}</a>
-              {l.type === 'quiz' && <span class="tag">quiz</span>}
-            </li>
-          ))}
-        </ol>
-      </section>
-    ))
-  }
-</Base>
+  <article class="lesson">
+    <p class="crumbs"><a href={href('/')}>All courses</a></p>
+    <h1>{course.title}</h1>
+    {course.estimatedDuration && <p class="lesson__meta">{course.estimatedDuration}</p>}
+
+    {welcome.html && <div class="prose" set:html={welcome.html} />}
+
+    {
+      firstModule && firstLesson && (
+        <p class="welcome-cta">
+          <a class="btn" href={href(`/courses/${course.id}/${firstModule.id}/${firstLesson.id}/`)}>
+            Start the course →
+          </a>
+        </p>
+      )
+    }
+  </article>
+
+  <OnThisPage slot="toc" headings={welcome.headings} />
+</CourseShell>

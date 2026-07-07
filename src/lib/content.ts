@@ -30,6 +30,14 @@ export interface Lesson {
   type: 'content' | 'quiz';
   markdownPath?: string;
   quizPath?: string;
+  /** Optional "What you'll learn" bullet points, shown in a callout at the top of the lesson. */
+  objectives?: string[];
+}
+
+export interface Heading {
+  depth: number;
+  text: string;
+  slug: string;
 }
 
 export interface ModuleManifest {
@@ -108,14 +116,62 @@ export function resolveCourse(slug: string, rootDir?: string): ResolvedCourse {
   return { course, modules };
 }
 
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+/** Estimated reading time in minutes (~200 words/min, minimum 1). */
+export function readingTime(md: string): number {
+  const words = md.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+/**
+ * Render Markdown to HTML and collect the h2/h3 headings for an "on this page"
+ * table of contents. Injects a unique `id` on each heading for anchor links.
+ */
+export function renderMarkdownWithHeadings(md: string): { html: string; headings: Heading[] } {
+  let html = marked.parse(md, { async: false }) as string;
+  const headings: Heading[] = [];
+  const seen = new Set<string>();
+  html = html.replace(/<(h[23])>([\s\S]*?)<\/\1>/g, (_full, tag: string, inner: string) => {
+    const text = inner.replace(/<[^>]+>/g, '').trim();
+    const base = slugify(text) || 'section';
+    let slug = base;
+    let n = 2;
+    while (seen.has(slug)) slug = `${base}-${n++}`;
+    seen.add(slug);
+    headings.push({ depth: tag === 'h2' ? 2 : 3, text, slug });
+    return `<${tag} id="${slug}">${inner}</${tag}>`;
+  });
+  return { html, headings };
+}
+
 export function renderMarkdown(md: string): string {
-  return marked.parse(md, { async: false }) as string;
+  return renderMarkdownWithHeadings(md).html;
+}
+
+export interface LessonContent {
+  html: string;
+  headings: Heading[];
+  minutes: number;
+}
+
+export function lessonContent(moduleId: string, lesson: Lesson, rootDir?: string): LessonContent {
+  if (lesson.type !== 'content' || !lesson.markdownPath) {
+    return { html: '', headings: [], minutes: 0 };
+  }
+  const p = path.join(root(rootDir), 'modules', moduleId, lesson.markdownPath);
+  const md = fs.readFileSync(p, 'utf-8');
+  const { html, headings } = renderMarkdownWithHeadings(md);
+  return { html, headings, minutes: readingTime(md) };
 }
 
 export function lessonHtml(moduleId: string, lesson: Lesson, rootDir?: string): string {
-  if (lesson.type !== 'content' || !lesson.markdownPath) return '';
-  const p = path.join(root(rootDir), 'modules', moduleId, lesson.markdownPath);
-  return renderMarkdown(fs.readFileSync(p, 'utf-8'));
+  return lessonContent(moduleId, lesson, rootDir).html;
 }
 
 export function loadQuiz(moduleId: string, lesson: Lesson, rootDir?: string): Quiz {
@@ -123,11 +179,15 @@ export function loadQuiz(moduleId: string, lesson: Lesson, rootDir?: string): Qu
   return readJson<Quiz>(p);
 }
 
-export function courseWelcomeHtml(course: Course, rootDir?: string): string {
-  if (!course.welcomePath) return '';
+export function courseWelcomeContent(course: Course, rootDir?: string): { html: string; headings: Heading[] } {
+  if (!course.welcomePath) return { html: '', headings: [] };
   const p = path.join(root(rootDir), 'courses', course.id, course.welcomePath);
-  if (!fs.existsSync(p)) return '';
-  return renderMarkdown(fs.readFileSync(p, 'utf-8'));
+  if (!fs.existsSync(p)) return { html: '', headings: [] };
+  return renderMarkdownWithHeadings(fs.readFileSync(p, 'utf-8'));
+}
+
+export function courseWelcomeHtml(course: Course, rootDir?: string): string {
+  return courseWelcomeContent(course, rootDir).html;
 }
 
 /** Validate all content. Returns a list of human-readable errors (empty = valid). */

@@ -1,0 +1,23 @@
+---
+import type { Heading } from '../lib/content';
+
+interface Props {
+  headings: Heading[];
+}
+const { headings } = Astro.props;
+---
+
+{
+  headings.length > 0 && (
+    <nav class="on-this-page" aria-label="On this page">
+      <p class="on-this-page__title">On this page</p>
+      <ul>
+        {headings.map((h) => (
+          <li class:list={['on-this-page__item', `depth-${h.depth}`]}>
+            <a href={`#${h.slug}`}>{h.text}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

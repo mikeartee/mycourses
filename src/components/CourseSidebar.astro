@@ -1,0 +1,111 @@
+---
+import type { Course, ModuleManifest } from '../lib/content';
+import { href } from '../lib/url';
+
+interface Props {
+  course: Course;
+  modules: ModuleManifest[];
+  currentModuleId?: string;
+  currentLessonId?: string;
+  isWelcome?: boolean;
+}
+const { course, modules, currentModuleId, currentLessonId, isWelcome = false } = Astro.props;
+
+const totalItems = 1 + modules.reduce((n, m) => n + m.lessons.length, 0);
+const currentKey = isWelcome ? 'welcome' : `${currentModuleId}/${currentLessonId}`;
+---
+
+<nav class="course-nav" data-course-nav data-course-id={course.id} data-current-key={currentKey} aria-label="Course content">
+  <div class="course-nav__head">
+    <p class="course-nav__title">Course Content</p>
+    <p class="course-nav__progress-text"><span data-progress-count>0 of {totalItems} lessons completed</span></p>
+    <div class="course-nav__bar"><span class="course-nav__bar-fill" data-progress-bar style="width:0%"></span></div>
+  </div>
+
+  <a class:list={['course-nav__welcome', { 'is-active': isWelcome }]} href={href(`/courses/${course.id}/`)} data-lesson-key="welcome">
+    <span class="course-nav__check" aria-hidden="true"></span>
+    <span>Welcome</span>
+  </a>
+
+  <p class="course-nav__label">Core Modules</p>
+
+  {
+    modules.map((m, mi) => {
+      const isCurrentModule = m.id === currentModuleId;
+      return (
+        <details class="course-nav__module" data-module data-module-id={m.id} open={isCurrentModule}>
+          <summary class="course-nav__module-head">
+            <span class="course-nav__module-num">{mi + 1}</span>
+            <span class="course-nav__module-title">{m.title}</span>
+            <span class="course-nav__badge" data-module-badge>0/{m.lessons.length}</span>
+          </summary>
+          <ul class="course-nav__lessons">
+            {m.lessons.map((l) => {
+              const active = isCurrentModule && l.id === currentLessonId;
+              return (
+                <li>
+                  <a
+                    class:list={['course-nav__lesson', { 'is-active': active }]}
+                    href={href(`/courses/${course.id}/${m.id}/${l.id}/`)}
+                    data-lesson-key={`${m.id}/${l.id}`}
+                  >
+                    <span class="course-nav__check" aria-hidden="true"></span>
+                    <span class="course-nav__lesson-title">{l.title}</span>
+                    {l.type === 'quiz' && <span class="course-nav__quiz-tag">quiz</span>}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </details>
+      );
+    })
+  }
+</nav>
+
+<script>
+  // Client-side progress: viewing a lesson marks it complete (device-local).
+  const rail = document.querySelector('[data-course-nav]') as HTMLElement | null;
+  if (rail) {
+    const courseId = rail.dataset.courseId ?? '';
+    const currentKey = rail.dataset.currentKey ?? '';
+    const storeKey = `mycourses:progress:${courseId}`;
+
+    let done = new Set<string>();
+    try {
+      done = new Set(JSON.parse(localStorage.getItem(storeKey) ?? '[]'));
+    } catch {
+      done = new Set();
+    }
+    if (currentKey) {
+      done.add(currentKey);
+      localStorage.setItem(storeKey, JSON.stringify([...done]));
+    }
+
+    const keyOf = (el: Element) => el.getAttribute('data-lesson-key') ?? '';
+
+    // Per-lesson checkmarks
+    rail.querySelectorAll('[data-lesson-key]').forEach((el) => {
+      if (done.has(keyOf(el))) el.classList.add('is-done');
+    });
+
+    // Per-module badges
+    rail.querySelectorAll('[data-module]').forEach((mod) => {
+      const keys = Array.from(mod.querySelectorAll('[data-lesson-key]')).map(keyOf);
+      const d = keys.filter((k) => done.has(k)).length;
+      const badge = mod.querySelector('[data-module-badge]');
+      if (badge) badge.textContent = `${d}/${keys.length}`;
+    });
+
+    // Overall progress
+    const all = Array.from(rail.querySelectorAll('[data-lesson-key]')).map(keyOf);
+    const total = all.length;
+    const d = all.filter((k) => done.has(k)).length;
+    const pct = total ? Math.round((d / total) * 100) : 0;
+
+    const countEl = rail.querySelector('[data-progress-count]');
+    if (countEl) countEl.textContent = `${d} of ${total} lessons completed`;
+    const bar = rail.querySelector('[data-progress-bar]') as HTMLElement | null;
+    if (bar) bar.style.width = `${pct}%`;
+  }
+</script>

@@ -1,59 +1,81 @@
 ---
-import Base from '../../../../layouts/Base.astro';
+import CourseShell from '../../../../layouts/CourseShell.astro';
+import CourseSidebar from '../../../../components/CourseSidebar.astro';
+import OnThisPage from '../../../../components/OnThisPage.astro';
 import Quiz from '../../../../components/Quiz.astro';
-import { loadCourses, resolveCourse, lessonHtml, loadQuiz } from '../../../../lib/content';
+import { loadCourses, resolveCourse, lessonContent, loadQuiz } from '../../../../lib/content';
 import { href } from '../../../../lib/url';
 
 export function getStaticPaths() {
   const paths = [];
   for (const c of loadCourses()) {
-    const { modules } = resolveCourse(c.id);
-    const flat: { modId: string; modTitle: string; lessonId: string; lessonTitle: string }[] = [];
-    for (const m of modules) {
-      for (const l of m.lessons) {
-        flat.push({ modId: m.id, modTitle: m.title, lessonId: l.id, lessonTitle: l.title });
-      }
-    }
-    modules.forEach((m) => {
-      m.lessons.forEach((l) => {
-        const idx = flat.findIndex((f) => f.modId === m.id && f.lessonId === l.id);
-        const prev = idx > 0 ? flat[idx - 1] : null;
-        const next = idx < flat.length - 1 ? flat[idx + 1] : null;
-        paths.push({
-          params: { course: c.id, module: m.id, lesson: l.id },
-          props: {
-            courseId: c.id,
-            courseTitle: c.title,
-            moduleId: m.id,
-            moduleTitle: m.title,
-            lesson: l,
-            prev: prev ? { course: c.id, module: prev.modId, lesson: prev.lessonId, title: prev.lessonTitle } : null,
-            next: next ? { course: c.id, module: next.modId, lesson: next.lessonId, title: next.lessonTitle } : null,
-          },
-        });
+    const { course, modules } = resolveCourse(c.id);
+    const flat: { m: (typeof modules)[number]; l: (typeof modules)[number]['lessons'][number] }[] = [];
+    for (const m of modules) for (const l of m.lessons) flat.push({ m, l });
+    flat.forEach((cur, idx) => {
+      const prev = idx > 0 ? flat[idx - 1] : null;
+      const next = idx < flat.length - 1 ? flat[idx + 1] : null;
+      paths.push({
+        params: { course: c.id, module: cur.m.id, lesson: cur.l.id },
+        props: {
+          course,
+          modules,
+          moduleId: cur.m.id,
+          moduleTitle: cur.m.title,
+          lesson: cur.l,
+          prev: prev ? { course: c.id, module: prev.m.id, lesson: prev.l.id, title: prev.l.title } : null,
+          next: next ? { course: c.id, module: next.m.id, lesson: next.l.id, title: next.l.title } : null,
+        },
       });
     });
   }
   return paths;
 }
 
-const { courseId, courseTitle, moduleId, moduleTitle, lesson, prev, next } = Astro.props;
-const html = lesson.type === 'content' ? lessonHtml(moduleId, lesson) : '';
+const { course, modules, moduleId, moduleTitle, lesson, prev, next } = Astro.props;
+const content = lesson.type === 'content' ? lessonContent(moduleId, lesson) : { html: '', headings: [], minutes: 0 };
 const quiz = lesson.type === 'quiz' ? loadQuiz(moduleId, lesson) : null;
+const objectives = lesson.objectives ?? [];
 ---
 
-<Base title={`${lesson.title} · ${courseTitle}`}>
-  <p class="crumbs">
-    <a href={href('/')}>All courses</a> /
-    <a href={href(`/courses/${courseId}/`)}>{courseTitle}</a> / {moduleTitle}
-  </p>
-  <h1>{lesson.title}</h1>
+<CourseShell title={`${lesson.title} - ${course.title}`}>
+  <CourseSidebar
+    slot="sidebar"
+    course={course}
+    modules={modules}
+    currentModuleId={moduleId}
+    currentLessonId={lesson.id}
+  />
 
-  {lesson.type === 'content' && <article class="prose" set:html={html} />}
-  {lesson.type === 'quiz' && quiz && <Quiz quiz={quiz} />}
+  <article class="lesson">
+    <p class="crumbs">
+      <a href={href('/')}>All courses</a> /
+      <a href={href(`/courses/${course.id}/`)}>{course.title}</a> / {moduleTitle}
+    </p>
+    <h1>{lesson.title}</h1>
+    {content.minutes > 0 && <p class="lesson__meta">{content.minutes} min read</p>}
 
-  <nav class="lesson-nav">
-    {prev && <a class="prev" href={href(`/courses/${prev.course}/${prev.module}/${prev.lesson}/`)}>← {prev.title}</a>}
-    {next && <a class="next" href={href(`/courses/${next.course}/${next.module}/${next.lesson}/`)}>{next.title} →</a>}
-  </nav>
-</Base>
+    {
+      objectives.length > 0 && (
+        <div class="objectives">
+          <p class="objectives__title">What you'll learn</p>
+          <ul>
+            {objectives.map((o) => (
+              <li>{o}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    {lesson.type === 'content' && <div class="prose" set:html={content.html} />}
+    {lesson.type === 'quiz' && quiz && <Quiz quiz={quiz} />}
+
+    <nav class="lesson-nav">
+      {prev && <a class="prev" href={href(`/courses/${prev.course}/${prev.module}/${prev.lesson}/`)}>← {prev.title}</a>}
+      {next && <a class="next" href={href(`/courses/${next.course}/${next.module}/${next.lesson}/`)}>{next.title} →</a>}
+    </nav>
+  </article>
+
+  <OnThisPage slot="toc" headings={content.headings} />
+</CourseShell>

@@ -1,7 +1,14 @@
 import { describe, it, expect } from 'vitest';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadCourses, resolveCourse, validateContent } from './content';
+import {
+  loadCourses,
+  resolveCourse,
+  validateContent,
+  readingTime,
+  slugify,
+  renderMarkdownWithHeadings,
+} from './content';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const valid = path.join(here, '../../test/fixtures/valid');
@@ -43,5 +50,44 @@ describe('content validation', () => {
 
   it('flags a quiz question with no correct answer', () => {
     expect(errors.some((e) => e.includes('no correct answer'))).toBe(true);
+  });
+});
+
+describe('slugify', () => {
+  it('lowercases and hyphenates', () => {
+    expect(slugify('What Is AI?')).toBe('what-is-ai');
+  });
+  it('trims leading/trailing separators', () => {
+    expect(slugify('  Regular Software vs AI  ')).toBe('regular-software-vs-ai');
+  });
+});
+
+describe('readingTime', () => {
+  it('returns at least 1 minute for short text', () => {
+    expect(readingTime('a few words here')).toBe(1);
+  });
+  it('scales with word count (~200 wpm)', () => {
+    const md = Array.from({ length: 600 }, () => 'word').join(' ');
+    expect(readingTime(md)).toBe(3);
+  });
+});
+
+describe('renderMarkdownWithHeadings', () => {
+  const md = '# Title\n\n## First Section\n\ntext\n\n## Second Section\n\n### Sub\n\nmore';
+  const { html, headings } = renderMarkdownWithHeadings(md);
+
+  it('collects h2 and h3 headings (not h1)', () => {
+    expect(headings.map((h) => h.text)).toEqual(['First Section', 'Second Section', 'Sub']);
+    expect(headings.map((h) => h.depth)).toEqual([2, 2, 3]);
+  });
+
+  it('injects matching id anchors into the html', () => {
+    expect(html).toContain('<h2 id="first-section">First Section</h2>');
+    expect(html).toContain('<h3 id="sub">Sub</h3>');
+  });
+
+  it('de-duplicates repeated heading slugs', () => {
+    const dup = renderMarkdownWithHeadings('## Notes\n\na\n\n## Notes\n\nb');
+    expect(dup.headings.map((h) => h.slug)).toEqual(['notes', 'notes-2']);
   });
 });

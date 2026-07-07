@@ -1,0 +1,22 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<Base title={title} wide={true}>
+  <div class="course-shell">
+    <aside class="course-shell__rail course-shell__rail--left">
+      <slot name="sidebar" />
+    </aside>
+    <div class="course-shell__main">
+      <slot />
+    </div>
+    <aside class="course-shell__rail course-shell__rail--right">
+      <slot name="toc" />
+    </aside>
+  </div>
+</Base>
