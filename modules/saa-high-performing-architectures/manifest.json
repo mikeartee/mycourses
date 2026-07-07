@@ -3,9 +3,39 @@
   "title": "Domain 3: Design High-Performing Architectures (24%)",
   "description": "Choose the right compute, storage, and database for the workload, and use caching and content delivery to keep things fast at scale.",
   "lessons": [
-    { "id": "scalable-compute", "title": "Scalable and High-Performing Compute", "type": "content", "markdownPath": "scalable-compute.md" },
-    { "id": "storage-and-databases", "title": "Choosing Storage and Databases", "type": "content", "markdownPath": "storage-and-databases.md" },
-    { "id": "caching-and-delivery", "title": "Caching and Content Delivery", "type": "content", "markdownPath": "caching-and-delivery.md" },
+    {
+      "id": "scalable-compute",
+      "title": "Scalable and High-Performing Compute",
+      "type": "content",
+      "markdownPath": "scalable-compute.md",
+      "objectives": [
+        "Match EC2 instance families to a workload's bottleneck",
+        "Scale horizontally with Auto Scaling behind a load balancer",
+        "Choose Lambda or Fargate to cut operational overhead"
+      ]
+    },
+    {
+      "id": "storage-and-databases",
+      "title": "Choosing Storage and Databases",
+      "type": "content",
+      "markdownPath": "storage-and-databases.md",
+      "objectives": [
+        "Choose between S3, EBS, EFS, FSx, and instance store",
+        "Pick the right database: RDS, Aurora, DynamoDB, or Redshift",
+        "Distinguish read replicas (scaling reads) from Multi-AZ (availability)"
+      ]
+    },
+    {
+      "id": "caching-and-delivery",
+      "title": "Caching and Content Delivery",
+      "type": "content",
+      "markdownPath": "caching-and-delivery.md",
+      "objectives": [
+        "Use CloudFront to cache content close to users",
+        "Add ElastiCache or DAX to speed up reads",
+        "Tell CloudFront (content caching) apart from Global Accelerator (network path)"
+      ]
+    },
     { "id": "quiz", "title": "High-Performing Architectures Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

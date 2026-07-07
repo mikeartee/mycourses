@@ -3,9 +3,39 @@
   "title": "Working with Data",
   "description": "Store and organise collections of values with lists, tuples, dictionaries, and sets, and handle text with confidence.",
   "lessons": [
-    { "id": "lists-and-tuples", "title": "Lists and Tuples", "type": "content", "markdownPath": "lists-and-tuples.md" },
-    { "id": "dicts-and-sets", "title": "Dictionaries and Sets", "type": "content", "markdownPath": "dicts-and-sets.md" },
-    { "id": "strings-in-depth", "title": "Working with Strings", "type": "content", "markdownPath": "strings-in-depth.md" },
+    {
+      "id": "lists-and-tuples",
+      "title": "Lists and Tuples",
+      "type": "content",
+      "markdownPath": "lists-and-tuples.md",
+      "objectives": [
+        "Create, index, and slice lists",
+        "Modify lists with append, insert, remove, and pop",
+        "Explain how a tuple differs from a list and when to use each"
+      ]
+    },
+    {
+      "id": "dicts-and-sets",
+      "title": "Dictionaries and Sets",
+      "type": "content",
+      "markdownPath": "dicts-and-sets.md",
+      "objectives": [
+        "Store and look up key/value data with dictionaries",
+        "Access keys safely with get() and loop with items()",
+        "Use sets for unique values and fast membership tests"
+      ]
+    },
+    {
+      "id": "strings-in-depth",
+      "title": "Working with Strings",
+      "type": "content",
+      "markdownPath": "strings-in-depth.md",
+      "objectives": [
+        "Index and slice strings like sequences",
+        "Transform text with common string methods",
+        "Format values cleanly with f-strings"
+      ]
+    },
     { "id": "quiz", "title": "Data Structures Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

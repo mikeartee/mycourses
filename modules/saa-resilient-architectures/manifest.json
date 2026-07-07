@@ -3,9 +3,39 @@
   "title": "Domain 2: Design Resilient Architectures (26%)",
   "description": "Build for failure: high availability across Availability Zones, loosely coupled components, and disaster recovery with clear RTO/RPO trade-offs.",
   "lessons": [
-    { "id": "high-availability", "title": "High Availability and Fault Tolerance", "type": "content", "markdownPath": "high-availability.md" },
-    { "id": "decoupling", "title": "Decoupling with Queues and Events", "type": "content", "markdownPath": "decoupling.md" },
-    { "id": "backup-dr", "title": "Backup and Disaster Recovery", "type": "content", "markdownPath": "backup-dr.md" },
+    {
+      "id": "high-availability",
+      "title": "High Availability and Fault Tolerance",
+      "type": "content",
+      "markdownPath": "high-availability.md",
+      "objectives": [
+        "Design across multiple Availability Zones",
+        "Combine ELB and Auto Scaling into a self-healing tier",
+        "Use Route 53 failover and RDS Multi-AZ for availability"
+      ]
+    },
+    {
+      "id": "decoupling",
+      "title": "Decoupling with Queues and Events",
+      "type": "content",
+      "markdownPath": "decoupling.md",
+      "objectives": [
+        "Explain why decoupling improves resilience",
+        "Choose between SQS, SNS, and EventBridge",
+        "Apply the SNS + SQS fan-out pattern"
+      ]
+    },
+    {
+      "id": "backup-dr",
+      "title": "Backup and Disaster Recovery",
+      "type": "content",
+      "markdownPath": "backup-dr.md",
+      "objectives": [
+        "Define RTO and RPO and how they drive DR decisions",
+        "Compare the four DR strategies by cost and recovery speed",
+        "Pick services for backup and cross-Region recovery"
+      ]
+    },
     { "id": "quiz", "title": "Resilient Architectures Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

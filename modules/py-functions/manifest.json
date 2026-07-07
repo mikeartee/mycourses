@@ -3,9 +3,39 @@
   "title": "Organising Code with Functions",
   "description": "Package logic into reusable functions, control their inputs and outputs, and pull in code from Python's standard library.",
   "lessons": [
-    { "id": "defining-functions", "title": "Defining and Calling Functions", "type": "content", "markdownPath": "defining-functions.md" },
-    { "id": "arguments", "title": "Arguments, Defaults, and Keyword Arguments", "type": "content", "markdownPath": "arguments.md" },
-    { "id": "modules-imports", "title": "Modules, Imports, and the Standard Library", "type": "content", "markdownPath": "modules-imports.md" },
+    {
+      "id": "defining-functions",
+      "title": "Defining and Calling Functions",
+      "type": "content",
+      "markdownPath": "defining-functions.md",
+      "objectives": [
+        "Define and call a function with parameters",
+        "Return a value and explain how return differs from print",
+        "Use functions to remove duplication and centralise logic"
+      ]
+    },
+    {
+      "id": "arguments",
+      "title": "Arguments, Defaults, and Keyword Arguments",
+      "type": "content",
+      "markdownPath": "arguments.md",
+      "objectives": [
+        "Pass arguments positionally and by keyword",
+        "Give parameters default values",
+        "Avoid the mutable-default trap and recognise *args / **kwargs"
+      ]
+    },
+    {
+      "id": "modules-imports",
+      "title": "Modules, Imports, and the Standard Library",
+      "type": "content",
+      "markdownPath": "modules-imports.md",
+      "objectives": [
+        "Import modules and specific names from the standard library",
+        "Alias an import with as",
+        "Import from your own .py files"
+      ]
+    },
     { "id": "quiz", "title": "Functions Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

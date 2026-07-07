@@ -3,9 +3,39 @@
   "title": "Domain 1: Design Secure Architectures (30%)",
   "description": "Secure access with IAM, protect data with encryption and key management, and secure networks with VPC controls. The heaviest domain on the exam.",
   "lessons": [
-    { "id": "iam-and-access", "title": "Identity and Access: IAM", "type": "content", "markdownPath": "iam-and-access.md" },
-    { "id": "data-protection", "title": "Data Protection: Encryption and KMS", "type": "content", "markdownPath": "data-protection.md" },
-    { "id": "network-security", "title": "Network Security: VPC, Security Groups, and NACLs", "type": "content", "markdownPath": "network-security.md" },
+    {
+      "id": "iam-and-access",
+      "title": "Identity and Access: IAM",
+      "type": "content",
+      "markdownPath": "iam-and-access.md",
+      "objectives": [
+        "Explain IAM users, groups, roles, and policies",
+        "Choose roles over long-lived keys for workloads and cross-account access",
+        "Apply least privilege and predict how allow and deny evaluate"
+      ]
+    },
+    {
+      "id": "data-protection",
+      "title": "Data Protection: Encryption and KMS",
+      "type": "content",
+      "markdownPath": "data-protection.md",
+      "objectives": [
+        "Encrypt data both at rest and in transit",
+        "Explain what KMS does and when to use customer managed keys",
+        "Use ACM and Secrets Manager instead of hard-coded secrets"
+      ]
+    },
+    {
+      "id": "network-security",
+      "title": "Network Security: VPC, Security Groups, and NACLs",
+      "type": "content",
+      "markdownPath": "network-security.md",
+      "objectives": [
+        "Lay out public and private subnets with internet and NAT gateways",
+        "Contrast stateful security groups with stateless network ACLs",
+        "Use VPC endpoints and edge protections (WAF, Shield)"
+      ]
+    },
     { "id": "quiz", "title": "Secure Architectures Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

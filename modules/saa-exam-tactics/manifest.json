@@ -3,8 +3,28 @@
   "title": "Exam Tactics and Next Steps",
   "description": "How to read scenario questions, eliminate wrong answers, manage time, and put together a study plan for the weeks before the exam.",
   "lessons": [
-    { "id": "answering-scenarios", "title": "Reading Scenarios and Eliminating Answers", "type": "content", "markdownPath": "answering-scenarios.md" },
-    { "id": "study-plan", "title": "A Study Plan and Resources", "type": "content", "markdownPath": "study-plan.md" },
+    {
+      "id": "answering-scenarios",
+      "title": "Reading Scenarios and Eliminating Answers",
+      "type": "content",
+      "markdownPath": "answering-scenarios.md",
+      "objectives": [
+        "Spot the priority word that points to the best answer",
+        "Eliminate anti-patterns and options that break a hard constraint",
+        "Manage time with flag-and-return, and never leave a blank"
+      ]
+    },
+    {
+      "id": "study-plan",
+      "title": "A Study Plan and Resources",
+      "type": "content",
+      "markdownPath": "study-plan.md",
+      "objectives": [
+        "Sequence your prep from fundamentals to timed practice exams",
+        "Prioritise the heaviest domains and the 'which service?' comparisons",
+        "Decide when your practice scores mean you're ready to book"
+      ]
+    },
     { "id": "quiz", "title": "Exam Tactics Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

@@ -3,9 +3,39 @@
   "title": "Domain 4: Design Cost-Optimized Architectures (20%)",
   "description": "Pick the right pricing models for compute, cut storage and data-transfer cost, and use the tools that track and control spend.",
   "lessons": [
-    { "id": "compute-pricing", "title": "Compute Pricing Models", "type": "content", "markdownPath": "compute-pricing.md" },
-    { "id": "storage-data-cost", "title": "Storage and Data Transfer Cost", "type": "content", "markdownPath": "storage-data-cost.md" },
-    { "id": "cost-management-tools", "title": "Cost Management and Governance Tools", "type": "content", "markdownPath": "cost-management-tools.md" },
+    {
+      "id": "compute-pricing",
+      "title": "Compute Pricing Models",
+      "type": "content",
+      "markdownPath": "compute-pricing.md",
+      "objectives": [
+        "Match On-Demand, Reserved, Savings Plans, and Spot to usage patterns",
+        "Combine pricing models across one workload",
+        "Use serverless to avoid paying for idle capacity"
+      ]
+    },
+    {
+      "id": "storage-data-cost",
+      "title": "Storage and Data Transfer Cost",
+      "type": "content",
+      "markdownPath": "storage-data-cost.md",
+      "objectives": [
+        "Match S3 storage classes to how often data is accessed",
+        "Automate savings with S3 Lifecycle rules",
+        "Reduce data-transfer and idle-storage costs"
+      ]
+    },
+    {
+      "id": "cost-management-tools",
+      "title": "Cost Management and Governance Tools",
+      "type": "content",
+      "markdownPath": "cost-management-tools.md",
+      "objectives": [
+        "Pick the right tool: Cost Explorer, Budgets, or the Cost and Usage Report",
+        "Attribute spend with cost allocation tags",
+        "Surface waste with Trusted Advisor and Compute Optimizer"
+      ]
+    },
     { "id": "quiz", "title": "Cost-Optimized Architectures Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

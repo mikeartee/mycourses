@@ -3,9 +3,39 @@
   "title": "The SAA-C03 Exam: Format, Domains, and Strategy",
   "description": "How the exam is structured, what the four domains weigh, and the Well-Architected Framework that underpins nearly every question.",
   "lessons": [
-    { "id": "exam-format", "title": "Exam Format and Scoring", "type": "content", "markdownPath": "exam-format.md" },
-    { "id": "domains-and-weighting", "title": "The Four Domains and Their Weighting", "type": "content", "markdownPath": "domains-and-weighting.md" },
-    { "id": "well-architected", "title": "The AWS Well-Architected Framework", "type": "content", "markdownPath": "well-architected.md" },
+    {
+      "id": "exam-format",
+      "title": "Exam Format and Scoring",
+      "type": "content",
+      "markdownPath": "exam-format.md",
+      "objectives": [
+        "Describe the exam's question count, time limit, and delivery",
+        "Tell multiple-choice from multiple-response and how each is scored",
+        "State the passing score and plan a sensible pace"
+      ]
+    },
+    {
+      "id": "domains-and-weighting",
+      "title": "The Four Domains and Their Weighting",
+      "type": "content",
+      "markdownPath": "domains-and-weighting.md",
+      "objectives": [
+        "Name the four exam domains and their weightings",
+        "Prioritise study time according to domain weight",
+        "Recognise that questions blend domains and ask for the best trade-off"
+      ]
+    },
+    {
+      "id": "well-architected",
+      "title": "The AWS Well-Architected Framework",
+      "type": "content",
+      "markdownPath": "well-architected.md",
+      "objectives": [
+        "List the six Well-Architected pillars",
+        "Map the four exam domains to their pillars",
+        "Use recurring design principles (multi-AZ, decoupling, managed services) to choose the best answer"
+      ]
+    },
     { "id": "quiz", "title": "Exam Overview Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

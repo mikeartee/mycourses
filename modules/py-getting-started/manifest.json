@@ -3,9 +3,41 @@
   "title": "Getting Started with Python",
   "description": "What Python is, how to run it, and how to store and label data with variables and basic types.",
   "lessons": [
-    { "id": "what-is-python", "title": "What Python Is and Why It's Worth Learning", "type": "content", "markdownPath": "what-is-python.md" },
-    { "id": "running-python", "title": "Installing and Running Python", "type": "content", "markdownPath": "running-python.md" },
-    { "id": "variables-and-types", "title": "Variables and Basic Types", "type": "content", "markdownPath": "variables-and-types.md" },
+    {
+      "id": "what-is-python",
+      "title": "What Python Is and Why It's Worth Learning",
+      "type": "content",
+      "markdownPath": "what-is-python.md",
+      "objectives": [
+        "Explain in plain terms what Python is and what it's used for",
+        "Give three reasons Python is a strong first language",
+        "Recognise a simple Python program and what print() does"
+      ]
+    },
+    {
+      "id": "running-python",
+      "title": "Installing and Running Python",
+      "type": "content",
+      "markdownPath": "running-python.md",
+      "objectives": [
+        "Install Python 3 and confirm it from a terminal",
+        "Run code interactively in the REPL",
+        "Write and run a .py script file",
+        "Use # comments to annotate code"
+      ]
+    },
+    {
+      "id": "variables-and-types",
+      "title": "Variables and Basic Types",
+      "type": "content",
+      "markdownPath": "variables-and-types.md",
+      "objectives": [
+        "Create and reassign variables with =",
+        "Identify the core types: int, float, str, and bool",
+        "Build strings with f-strings and do basic arithmetic",
+        "Convert between types with int(), float(), and str()"
+      ]
+    },
     { "id": "quiz", "title": "Getting Started Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }

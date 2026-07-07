@@ -3,9 +3,39 @@
   "title": "Making Decisions and Repeating Work",
   "description": "Use conditionals and loops to make programs react to data and repeat work without repeating yourself.",
   "lessons": [
-    { "id": "conditionals", "title": "Conditionals: if, elif, and else", "type": "content", "markdownPath": "conditionals.md" },
-    { "id": "loops", "title": "Loops: for and while", "type": "content", "markdownPath": "loops.md" },
-    { "id": "comprehensions", "title": "List Comprehensions", "type": "content", "markdownPath": "comprehensions.md" },
+    {
+      "id": "conditionals",
+      "title": "Conditionals: if, elif, and else",
+      "type": "content",
+      "markdownPath": "conditionals.md",
+      "objectives": [
+        "Branch between paths with if, elif, and else",
+        "Compare values and combine conditions with and, or, and not",
+        "Recognise which values are truthy and falsy"
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops: for and while",
+      "type": "content",
+      "markdownPath": "loops.md",
+      "objectives": [
+        "Iterate over a sequence with for and count with range()",
+        "Repeat with while without creating an infinite loop",
+        "Control loops with break and continue"
+      ]
+    },
+    {
+      "id": "comprehensions",
+      "title": "List Comprehensions",
+      "type": "content",
+      "markdownPath": "comprehensions.md",
+      "objectives": [
+        "Build a new list with a comprehension",
+        "Filter items with an if clause",
+        "Judge when a comprehension aids readability and when a loop is clearer"
+      ]
+    },
     { "id": "quiz", "title": "Control Flow Quiz", "type": "quiz", "quizPath": "quiz.json" }
   ]
 }
