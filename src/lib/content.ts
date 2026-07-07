@@ -133,12 +133,25 @@ export function readingTime(md: string): number {
  * Render Markdown to HTML and collect the h2/h3 headings for an "on this page"
  * table of contents. Injects a unique `id` on each heading for anchor links.
  */
+/** Decode the HTML entities marked emits (e.g. &#39; -> ') so extracted heading
+ *  text isn't double-escaped when re-rendered as plain text in the TOC. */
+function decodeEntities(s: string): string {
+  return s
+    .replace(/&#(\d+);/g, (_m, n: string) => String.fromCharCode(parseInt(n, 10)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_m, n: string) => String.fromCharCode(parseInt(n, 16)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+}
+
 export function renderMarkdownWithHeadings(md: string): { html: string; headings: Heading[] } {
   let html = marked.parse(md, { async: false }) as string;
   const headings: Heading[] = [];
   const seen = new Set<string>();
   html = html.replace(/<(h[23])>([\s\S]*?)<\/\1>/g, (_full, tag: string, inner: string) => {
-    const text = inner.replace(/<[^>]+>/g, '').trim();
+    const text = decodeEntities(inner.replace(/<[^>]+>/g, '').trim());
     const base = slugify(text) || 'section';
     let slug = base;
     let n = 2;

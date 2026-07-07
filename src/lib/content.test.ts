@@ -90,4 +90,16 @@ describe('renderMarkdownWithHeadings', () => {
     const dup = renderMarkdownWithHeadings('## Notes\n\na\n\n## Notes\n\nb');
     expect(dup.headings.map((h) => h.slug)).toEqual(['notes', 'notes-2']);
   });
+
+  it("decodes HTML entities so heading text isn't double-escaped", () => {
+    const r = renderMarkdownWithHeadings("## What you'll be able to do");
+    expect(r.headings[0].text).toBe("What you'll be able to do");
+    expect(r.headings[0].text).not.toContain('&#');
+    expect(r.headings[0].slug).not.toContain('39');
+  });
+
+  it('decodes ampersands and quotes in heading text', () => {
+    const r = renderMarkdownWithHeadings('## Cost & "Value"');
+    expect(r.headings[0].text).toBe('Cost & "Value"');
+  });
 });
