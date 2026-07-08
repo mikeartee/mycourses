@@ -587,3 +587,81 @@ h1 {
     padding: 20px 16px 48px;
   }
 }
+
+/* ============================================================
+   Home page: hero + rich course cards
+   ============================================================ */
+
+.hero {
+  padding: 8px 0 4px;
+}
+
+.hero__title {
+  font-size: 2.3rem;
+  margin: 0 0 8px;
+}
+
+.hero__tagline {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 62ch;
+  margin: 0;
+}
+
+.home-section {
+  margin-top: 34px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.course-card__desc {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+.course-card__meta {
+  margin: 6px 0 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.course-card__progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 16px;
+}
+
+.course-card__bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.course-card__bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.course-card__progress-text {
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.course-card__cta {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
+
+@media (min-width: 720px) {
+  .course-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}

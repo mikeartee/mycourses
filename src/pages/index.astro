@@ -1,25 +1,98 @@
 ---
 import Base from '../layouts/Base.astro';
-import { loadCourses } from '../lib/content';
+import { loadCourses, resolveCourse } from '../lib/content';
 import { href } from '../lib/url';
 
-const courses = loadCourses();
+const cards = loadCourses().map((c) => {
+  const { modules } = resolveCourse(c.id);
+  const lessonCount = modules.reduce((n, m) => n + m.lessons.length, 0);
+  const items = [
+    { key: 'welcome', href: href(`/courses/${c.id}/`) },
+    ...modules.flatMap((m) =>
+      m.lessons.map((l) => ({ key: `${m.id}/${l.id}`, href: href(`/courses/${c.id}/${m.id}/${l.id}/`) }))
+    ),
+  ];
+  return { course: c, moduleCount: modules.length, lessonCount, items };
+});
 ---
 
 <Base title="mycourses">
-  <h1>Courses</h1>
-  {courses.length === 0 && <p>No courses yet.</p>}
+  <section class="hero">
+    <h1 class="hero__title">mycourses</h1>
+    <p class="hero__tagline">
+      A personal learning library. Pick a course, work through the lessons and quizzes at your own pace, and
+      your progress is saved on your device.
+    </p>
+  </section>
+
+  <h2 class="home-section">Courses</h2>
+  {cards.length === 0 && <p>No courses yet.</p>}
+
   <ul class="course-list">
     {
-      courses.map((c) => (
-        <li class="course-card">
-          <a class="course-title" href={href(`/courses/${c.id}/`)}>
-            {c.title}
+      cards.map(({ course, moduleCount, lessonCount, items }) => (
+        <li class="course-card" data-course-card data-course-id={course.id} data-items={JSON.stringify(items)}>
+          <a class="course-title" href={href(`/courses/${course.id}/`)}>
+            {course.title}
           </a>
-          {c.description && <p>{c.description}</p>}
-          {c.estimatedDuration && <span class="meta">{c.estimatedDuration}</span>}
+          {course.description && <p class="course-card__desc">{course.description}</p>}
+          <p class="course-card__meta">
+            {moduleCount} modules &middot; {lessonCount} lessons
+            {course.estimatedDuration && <> &middot; {course.estimatedDuration}</>}
+          </p>
+          <div class="course-card__progress">
+            <span class="course-card__bar"><span class="course-card__bar-fill" data-card-bar style="width:0%" /></span>
+            <span class="course-card__progress-text" data-card-progress>Not started</span>
+          </div>
+          <a class="btn course-card__cta" href={href(`/courses/${course.id}/`)} data-card-cta>
+            Start course
+          </a>
         </li>
       ))
     }
   </ul>
 </Base>
+
+<script>
+  // Per-course progress + Start/Continue, read from the same localStorage the sidebar writes.
+  document.querySelectorAll('[data-course-card]').forEach((card) => {
+    const el = card as HTMLElement;
+    const courseId = el.dataset.courseId ?? '';
+    let items: { key: string; href: string }[] = [];
+    try {
+      items = JSON.parse(el.dataset.items ?? '[]');
+    } catch {
+      items = [];
+    }
+
+    let done = new Set<string>();
+    try {
+      done = new Set(JSON.parse(localStorage.getItem(`mycourses:progress:${courseId}`) ?? '[]'));
+    } catch {
+      done = new Set();
+    }
+
+    const total = items.length;
+    const complete = items.filter((it) => done.has(it.key)).length;
+    const pct = total ? Math.round((complete / total) * 100) : 0;
+
+    const bar = el.querySelector('[data-card-bar]') as HTMLElement | null;
+    if (bar) bar.style.width = `${pct}%`;
+    const txt = el.querySelector('[data-card-progress]');
+    const cta = el.querySelector('[data-card-cta]');
+
+    if (complete === 0) {
+      if (txt) txt.textContent = 'Not started';
+    } else if (complete >= total) {
+      if (txt) txt.textContent = 'Completed';
+      if (cta) cta.textContent = 'Review course';
+    } else {
+      if (txt) txt.textContent = `${complete} of ${total} done \u00b7 ${pct}%`;
+      const next = items.find((it) => !done.has(it.key));
+      if (cta && next) {
+        cta.textContent = 'Continue';
+        cta.setAttribute('href', next.href);
+      }
+    }
+  });
+</script>
