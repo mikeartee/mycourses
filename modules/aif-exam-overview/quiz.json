@@ -1,0 +1,56 @@
+{
+  "title": "Exam Overview Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What scaled score is needed to pass the AIF-C01 exam?",
+      "answers": [
+        { "id": "q1_a", "text": "700 out of 1000", "correct": true },
+        { "id": "q1_b", "text": "720 out of 1000", "correct": false },
+        { "id": "q1_c", "text": "1000 out of 1000", "correct": false }
+      ],
+      "feedback": "AIF-C01 is scored 100-1000 with a passing score of 700 (the SAA associate exam is 720; don't mix them up)."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Which two domains together make up more than half the exam?",
+      "answers": [
+        { "id": "q2_a", "text": "Fundamentals of Generative AI (24%) and Applications of Foundation Models (28%)", "correct": true },
+        { "id": "q2_b", "text": "Responsible AI (14%) and Security, Compliance, and Governance (14%)", "correct": false },
+        { "id": "q2_c", "text": "Fundamentals of AI and ML (20%) and Responsible AI (14%)", "correct": false }
+      ],
+      "feedback": "Generative AI (24%) plus Applications of Foundation Models (28%) is 52%, so Bedrock, prompting, RAG, and fine-tuning deserve the most study."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A business needs to transcribe recorded customer calls into text. Which service is the best fit?",
+      "answers": [
+        { "id": "q3_a", "text": "Amazon Transcribe", "correct": true },
+        { "id": "q3_b", "text": "Amazon Comprehend", "correct": false },
+        { "id": "q3_c", "text": "Amazon SageMaker (train a custom model)", "correct": false }
+      ],
+      "feedback": "Amazon Transcribe is the pre-trained speech-to-text service. Comprehend does text analysis; training a custom model is unnecessary when a managed service already does the job."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which statements about AIF-C01 are true?",
+      "answers": [
+        { "id": "q4_a", "text": "It is a foundational exam aimed at people who use, not necessarily build, AI/ML", "correct": true },
+        { "id": "q4_b", "text": "Scoring is compensatory: you pass on the overall score, not per domain", "correct": true },
+        { "id": "q4_c", "text": "Unanswered questions are scored as incorrect", "correct": true },
+        { "id": "q4_d", "text": "You must write and tune model code to pass", "correct": false }
+      ],
+      "feedback": "AIF-C01 is a no-code foundational exam with compensatory scoring; leaving questions blank only costs you marks."
+    }
+  ]
+}

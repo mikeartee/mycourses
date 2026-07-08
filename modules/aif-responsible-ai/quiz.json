@@ -1,0 +1,56 @@
+{
+  "title": "Responsible AI Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A hiring model was trained mostly on data from one group and now favours that group. What is this an example of?",
+      "answers": [
+        { "id": "q1_a", "text": "Bias, largely inherited from unrepresentative training data", "correct": true },
+        { "id": "q1_b", "text": "Hallucination", "correct": false },
+        { "id": "q1_c", "text": "Latency", "correct": false }
+      ],
+      "feedback": "Unfair skew from unrepresentative data is bias. Fix it with representative data, bias detection, and human oversight."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Which AWS tool detects bias and helps explain model predictions?",
+      "answers": [
+        { "id": "q2_a", "text": "Amazon SageMaker Clarify", "correct": true },
+        { "id": "q2_b", "text": "Amazon Rekognition", "correct": false },
+        { "id": "q2_c", "text": "Amazon Polly", "correct": false }
+      ],
+      "feedback": "SageMaker Clarify handles bias detection and explainability. Rekognition is vision; Polly is text-to-speech."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A company wants its Bedrock chatbot to refuse disallowed topics and redact personal information. What should it use?",
+      "answers": [
+        { "id": "q3_a", "text": "Amazon Bedrock Guardrails", "correct": true },
+        { "id": "q3_b", "text": "Amazon SageMaker Model Monitor", "correct": false },
+        { "id": "q3_c", "text": "Amazon Textract", "correct": false }
+      ],
+      "feedback": "Guardrails filter harmful content, block denied topics, and redact sensitive data. Model Monitor watches for drift; Textract reads documents."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which are sound responsible-AI practices?",
+      "answers": [
+        { "id": "q4_a", "text": "Keep a human in the loop for high-stakes decisions (e.g. Amazon A2I)", "correct": true },
+        { "id": "q4_b", "text": "Use representative data and check for bias", "correct": true },
+        { "id": "q4_c", "text": "Be transparent that AI is being used and about its limits", "correct": true },
+        { "id": "q4_d", "text": "Fully automate consequential decisions with no oversight or explainability", "correct": false }
+      ],
+      "feedback": "Human oversight, representative data, bias checks, and transparency are core. Fully automating high-stakes decisions with no oversight is the opposite of responsible AI."
+    }
+  ]
+}

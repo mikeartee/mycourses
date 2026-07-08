@@ -1,0 +1,41 @@
+{
+  "id": "aif-generative-ai",
+  "title": "Domain 2: Fundamentals of Generative AI (24%)",
+  "description": "What foundation models are, the vocabulary of tokens, embeddings, and prompts, what generative AI is good and bad at, and how AWS delivers it.",
+  "lessons": [
+    {
+      "id": "genai-concepts",
+      "title": "Foundation Models, Tokens, and Embeddings",
+      "type": "content",
+      "markdownPath": "genai-concepts.md",
+      "objectives": [
+        "Explain what a foundation model and a large language model are",
+        "Define tokens, embeddings, and prompts",
+        "Describe at a high level how a model generates the next token"
+      ]
+    },
+    {
+      "id": "genai-use-cases-and-limits",
+      "title": "Use Cases and Limitations",
+      "type": "content",
+      "markdownPath": "genai-use-cases-and-limits.md",
+      "objectives": [
+        "Identify strong business use cases for generative AI",
+        "Explain limitations: hallucination, nondeterminism, bias, and knowledge cutoff",
+        "Judge when generative AI is the wrong tool"
+      ]
+    },
+    {
+      "id": "genai-on-aws",
+      "title": "Generative AI on AWS",
+      "type": "content",
+      "markdownPath": "genai-on-aws.md",
+      "objectives": [
+        "Describe what Amazon Bedrock provides and why it's managed",
+        "Place Amazon Q, SageMaker JumpStart, and PartyRock",
+        "State the business benefits AWS highlights for generative AI"
+      ]
+    },
+    { "id": "quiz", "title": "Generative AI Fundamentals Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

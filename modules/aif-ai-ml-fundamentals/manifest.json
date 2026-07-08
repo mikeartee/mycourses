@@ -1,0 +1,41 @@
+{
+  "id": "aif-ai-ml-fundamentals",
+  "title": "Domain 1: Fundamentals of AI and ML (20%)",
+  "description": "The core vocabulary and mental model: how AI, ML, deep learning, and generative AI relate, the main types of ML, and the machine-learning lifecycle.",
+  "lessons": [
+    {
+      "id": "ai-ml-deep-learning",
+      "title": "AI, ML, Deep Learning, and Generative AI",
+      "type": "content",
+      "markdownPath": "ai-ml-deep-learning.md",
+      "objectives": [
+        "Explain how AI, machine learning, deep learning, and generative AI nest inside each other",
+        "Define a model, training, and inference in plain terms",
+        "Recognise everyday examples of each"
+      ]
+    },
+    {
+      "id": "types-of-ml",
+      "title": "Types of Machine Learning",
+      "type": "content",
+      "markdownPath": "types-of-ml.md",
+      "objectives": [
+        "Distinguish supervised, unsupervised, and reinforcement learning",
+        "Tell classification from regression, and both from clustering",
+        "Match a learning type to a business problem and its data"
+      ]
+    },
+    {
+      "id": "ml-lifecycle-and-aws",
+      "title": "The ML Lifecycle and Where AWS Fits",
+      "type": "content",
+      "markdownPath": "ml-lifecycle-and-aws.md",
+      "objectives": [
+        "Put the stages of the ML lifecycle in order",
+        "Explain why data quality drives model quality",
+        "Decide when to use a pre-built AI service versus building with SageMaker"
+      ]
+    },
+    { "id": "quiz", "title": "AI and ML Fundamentals Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

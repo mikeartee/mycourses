@@ -1,0 +1,52 @@
+{
+  "id": "aif-foundation-models",
+  "title": "Domain 3: Applications of Foundation Models (28%)",
+  "description": "The biggest domain: choosing a model, prompt engineering, grounding and customising with RAG and fine-tuning, and evaluating results.",
+  "lessons": [
+    {
+      "id": "selecting-foundation-models",
+      "title": "Selecting a Foundation Model",
+      "type": "content",
+      "markdownPath": "selecting-foundation-models.md",
+      "objectives": [
+        "List the factors that go into choosing a model (cost, latency, modality, context window, accuracy)",
+        "Explain inference parameters like temperature, top-p, and max tokens",
+        "Match a model choice to a business constraint"
+      ]
+    },
+    {
+      "id": "prompt-engineering",
+      "title": "Prompt Engineering",
+      "type": "content",
+      "markdownPath": "prompt-engineering.md",
+      "objectives": [
+        "Write clearer prompts with instruction, context, and examples",
+        "Distinguish zero-shot, few-shot, and chain-of-thought prompting",
+        "Recognise prompt risks like prompt injection and jailbreaking"
+      ]
+    },
+    {
+      "id": "rag-and-customization",
+      "title": "RAG and Customising Models",
+      "type": "content",
+      "markdownPath": "rag-and-customization.md",
+      "objectives": [
+        "Explain retrieval-augmented generation and why it reduces hallucination",
+        "Compare RAG, fine-tuning, and continued pre-training",
+        "Choose the cheapest approach that meets the need"
+      ]
+    },
+    {
+      "id": "evaluating-models",
+      "title": "Evaluating Foundation Model Output",
+      "type": "content",
+      "markdownPath": "evaluating-models.md",
+      "objectives": [
+        "Describe common evaluation approaches, including human evaluation and benchmarks",
+        "Recognise metrics such as BLEU and ROUGE at a high level",
+        "Explain why evaluation matters given hallucination and nondeterminism"
+      ]
+    },
+    { "id": "quiz", "title": "Applications of Foundation Models Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "aif-exam-tactics",
+  "title": "Exam Tactics and Next Steps",
+  "description": "How to read AIF-C01 questions, handle the newer question types, manage time, and put together a short study plan.",
+  "lessons": [
+    {
+      "id": "answering-scenarios",
+      "title": "Reading Questions and Handling the New Formats",
+      "type": "content",
+      "markdownPath": "answering-scenarios.md",
+      "objectives": [
+        "Spot service-to-use-case keywords that point to the answer",
+        "Approach ordering and matching questions methodically",
+        "Manage time and never leave a question blank"
+      ]
+    },
+    {
+      "id": "study-plan",
+      "title": "A Study Plan and Resources",
+      "type": "content",
+      "markdownPath": "study-plan.md",
+      "objectives": [
+        "Sequence prep by domain weight, with hands-on Bedrock/PartyRock",
+        "Use official AWS resources and timed practice",
+        "Decide when you're ready to book"
+      ]
+    },
+    { "id": "quiz", "title": "Exam Tactics Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

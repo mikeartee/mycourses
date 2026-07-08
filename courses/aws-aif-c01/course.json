@@ -1,0 +1,16 @@
+{
+  "id": "aws-aif-c01",
+  "title": "AWS Certified AI Practitioner (AIF-C01)",
+  "description": "A study course for the AWS Certified AI Practitioner, AWS's foundational certification for understanding AI, machine learning, and generative AI and how to apply them on AWS. Organised around the five official exam domains. No coding required.",
+  "estimatedDuration": "8-10 hours",
+  "welcomePath": "welcome.md",
+  "modules": [
+    "aif-exam-overview",
+    "aif-ai-ml-fundamentals",
+    "aif-generative-ai",
+    "aif-foundation-models",
+    "aif-responsible-ai",
+    "aif-security-governance",
+    "aif-exam-tactics"
+  ]
+}

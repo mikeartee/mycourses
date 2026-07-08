@@ -1,0 +1,56 @@
+{
+  "title": "AI and ML Fundamentals Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "How do AI, machine learning, and generative AI relate?",
+      "answers": [
+        { "id": "q1_a", "text": "Generative AI is a subset of deep learning, which is a subset of ML, which is a subset of AI", "correct": true },
+        { "id": "q1_b", "text": "They are three unrelated fields", "correct": false },
+        { "id": "q1_c", "text": "AI is a subset of machine learning", "correct": false }
+      ],
+      "feedback": "They nest: AI ⊃ machine learning ⊃ deep learning ⊃ generative AI."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A bank wants to predict whether each transaction is fraudulent or legitimate, using historical transactions already labelled as fraud/not-fraud. What kind of ML is this?",
+      "answers": [
+        { "id": "q2_a", "text": "Supervised learning (classification)", "correct": true },
+        { "id": "q2_b", "text": "Unsupervised learning (clustering)", "correct": false },
+        { "id": "q2_c", "text": "Reinforcement learning", "correct": false }
+      ],
+      "feedback": "Labelled examples with known categories (fraud / not fraud) make it supervised classification."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "In the ML lifecycle, which stage is typically the most time-consuming and most affects final model quality?",
+      "answers": [
+        { "id": "q3_a", "text": "Collecting and preparing the data", "correct": true },
+        { "id": "q3_b", "text": "Deploying the model", "correct": false },
+        { "id": "q3_c", "text": "Naming the model", "correct": false }
+      ],
+      "feedback": "Data collection and preparation dominate the effort, and 'garbage in, garbage out' means data quality caps model quality."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "When is a pre-trained AWS AI service (rather than a custom SageMaker model) the better choice?",
+      "answers": [
+        { "id": "q4_a", "text": "The need is a common task like transcription, translation, or sentiment analysis", "correct": true },
+        { "id": "q4_b", "text": "You want to avoid collecting training data and managing the ML lifecycle", "correct": true },
+        { "id": "q4_c", "text": "The problem is highly specific to your business with no matching pre-built service", "correct": false },
+        { "id": "q4_d", "text": "You want the lowest effort solution that meets the need", "correct": true }
+      ],
+      "feedback": "Pre-trained services fit common tasks with minimal effort. A highly specific problem with no matching service is where custom SageMaker work is justified."
+    }
+  ]
+}

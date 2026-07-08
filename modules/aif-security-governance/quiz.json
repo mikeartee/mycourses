@@ -1,0 +1,56 @@
+{
+  "title": "Security and Governance Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Under the AWS shared responsibility model, which is the customer's responsibility for an AI workload?",
+      "answers": [
+        { "id": "q1_a", "text": "Configuring access (IAM), and protecting the data they put into the service", "correct": true },
+        { "id": "q1_b", "text": "Securing the physical data centres running the managed service", "correct": false },
+        { "id": "q1_c", "text": "Patching the underlying Bedrock service infrastructure", "correct": false }
+      ],
+      "feedback": "AWS secures the cloud (infrastructure); the customer secures what they put in it, data, access policies, and configuration."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "You need an audit trail of who invoked which model and when. Which service?",
+      "answers": [
+        { "id": "q2_a", "text": "AWS CloudTrail", "correct": true },
+        { "id": "q2_b", "text": "AWS Artifact", "correct": false },
+        { "id": "q2_c", "text": "Amazon Polly", "correct": false }
+      ],
+      "feedback": "CloudTrail records API activity (who did what). Artifact is for compliance reports; Polly is text-to-speech."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Where do you obtain AWS compliance reports such as SOC and ISO?",
+      "answers": [
+        { "id": "q3_a", "text": "AWS Artifact", "correct": true },
+        { "id": "q3_b", "text": "Amazon Macie", "correct": false },
+        { "id": "q3_c", "text": "SageMaker JumpStart", "correct": false }
+      ],
+      "feedback": "AWS Artifact is the self-service portal for compliance reports and agreements."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which statements about securing and governing AI on AWS are true?",
+      "answers": [
+        { "id": "q4_a", "text": "Amazon Macie helps discover and protect sensitive data (PII) in S3", "correct": true },
+        { "id": "q4_b", "text": "With Bedrock, your prompts/data are not used to train the base foundation models", "correct": true },
+        { "id": "q4_c", "text": "SageMaker Model Cards help document a model's details and intended use", "correct": true },
+        { "id": "q4_d", "text": "Encrypting training data is unnecessary if the bucket is private", "correct": false }
+      ],
+      "feedback": "Macie protects PII, Bedrock keeps your data out of base-model training, and Model Cards aid model governance. Encryption at rest is still best practice even for private buckets."
+    }
+  ]
+}

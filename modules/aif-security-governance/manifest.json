@@ -1,0 +1,30 @@
+{
+  "id": "aif-security-governance",
+  "title": "Domain 5: Security, Compliance, and Governance for AI Solutions (14%)",
+  "description": "Securing the data and models in AI solutions, and governing them: access control, encryption, data and model governance, compliance, and monitoring.",
+  "lessons": [
+    {
+      "id": "securing-ai-solutions",
+      "title": "Securing AI Data and Models",
+      "type": "content",
+      "markdownPath": "securing-ai-solutions.md",
+      "objectives": [
+        "Apply IAM, encryption, and the shared responsibility model to AI workloads",
+        "Explain how Bedrock keeps your data private",
+        "Pick services that protect data used with AI (KMS, Macie, PrivateLink)"
+      ]
+    },
+    {
+      "id": "governance-and-compliance",
+      "title": "Governance, Compliance, and Monitoring",
+      "type": "content",
+      "markdownPath": "governance-and-compliance.md",
+      "objectives": [
+        "Distinguish data governance from model governance",
+        "Find compliance information with AWS Artifact and AI Service Cards",
+        "Use CloudTrail and CloudWatch to audit and monitor AI usage"
+      ]
+    },
+    { "id": "quiz", "title": "Security and Governance Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

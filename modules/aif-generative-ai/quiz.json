@@ -1,0 +1,56 @@
+{
+  "title": "Generative AI Fundamentals Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "What best describes a foundation model?",
+      "answers": [
+        { "id": "q1_a", "text": "A large model pre-trained on broad data that can be adapted to many tasks", "correct": true },
+        { "id": "q1_b", "text": "A small model trained for one narrow task", "correct": false },
+        { "id": "q1_c", "text": "A rules engine that follows hand-written instructions", "correct": false }
+      ],
+      "feedback": "Foundation models are broadly pre-trained and reusable across many tasks, which is why one model can summarise, chat, translate, and more."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A model confidently produces an answer that sounds right but is factually made up. What is this called?",
+      "answers": [
+        { "id": "q2_a", "text": "Hallucination", "correct": true },
+        { "id": "q2_b", "text": "Overfitting", "correct": false },
+        { "id": "q2_c", "text": "Clustering", "correct": false }
+      ],
+      "feedback": "Hallucination is confident but incorrect output. It's the headline generative-AI risk; ground answers with RAG and review high-stakes output."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A team wants to build a chatbot using a choice of foundation models via one API, with no infrastructure to manage. Which service?",
+      "answers": [
+        { "id": "q3_a", "text": "Amazon Bedrock", "correct": true },
+        { "id": "q3_b", "text": "Amazon Rekognition", "correct": false },
+        { "id": "q3_c", "text": "Amazon Textract", "correct": false }
+      ],
+      "feedback": "Bedrock offers many foundation models behind one managed, serverless API. Rekognition (vision) and Textract (documents) are unrelated tasks."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which are genuine limitations of generative AI to keep in mind?",
+      "answers": [
+        { "id": "q4_a", "text": "It can hallucinate, producing confident but wrong output", "correct": true },
+        { "id": "q4_b", "text": "A base model doesn't know recent events or your private data unless you supply them", "correct": true },
+        { "id": "q4_c", "text": "The same prompt can produce different answers (nondeterminism)", "correct": true },
+        { "id": "q4_d", "text": "It guarantees a single exact, verifiable answer every time", "correct": false }
+      ],
+      "feedback": "Hallucination, knowledge cutoff, and nondeterminism are real limits. Guaranteed exact answers are exactly what generative AI does NOT provide without safeguards."
+    }
+  ]
+}

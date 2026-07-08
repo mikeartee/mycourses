@@ -1,0 +1,56 @@
+{
+  "title": "Applications of Foundation Models Quiz",
+  "type": "quiz",
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "questionNumber": 1,
+      "type": "MULTIPLE_CHOICE",
+      "question": "A chatbot must answer using the company's own product documents, which change often, and hallucination must be minimised. What's the best first approach?",
+      "answers": [
+        { "id": "q1_a", "text": "Retrieval-Augmented Generation (RAG), e.g. Bedrock Knowledge Bases", "correct": true },
+        { "id": "q1_b", "text": "Continued pre-training on the whole internet", "correct": false },
+        { "id": "q1_c", "text": "Raise the temperature so answers are more creative", "correct": false }
+      ],
+      "feedback": "RAG grounds answers in your current documents without training and reduces hallucination. Raising temperature would make things worse."
+    },
+    {
+      "id": "q2",
+      "questionNumber": 2,
+      "type": "MULTIPLE_CHOICE",
+      "question": "You want the model's answers to be more consistent and less random. Which inference setting do you change?",
+      "answers": [
+        { "id": "q2_a", "text": "Lower the temperature", "correct": true },
+        { "id": "q2_b", "text": "Raise the temperature", "correct": false },
+        { "id": "q2_c", "text": "Increase max tokens", "correct": false }
+      ],
+      "feedback": "Lower temperature makes output more focused and deterministic. Higher temperature adds randomness; max tokens only controls length."
+    },
+    {
+      "id": "q3",
+      "questionNumber": 3,
+      "type": "MULTIPLE_CHOICE",
+      "question": "Including a few input/output examples directly in the prompt to set the pattern is called what?",
+      "answers": [
+        { "id": "q3_a", "text": "Few-shot prompting", "correct": true },
+        { "id": "q3_b", "text": "Zero-shot prompting", "correct": false },
+        { "id": "q3_c", "text": "Fine-tuning", "correct": false }
+      ],
+      "feedback": "Few-shot puts examples in the prompt. Zero-shot uses none; fine-tuning changes the model itself through training."
+    },
+    {
+      "id": "q4",
+      "questionNumber": 4,
+      "type": "MULTIPLE_RESPONSE",
+      "question": "Which are true about evaluating and adapting foundation models?",
+      "answers": [
+        { "id": "q4_a", "text": "Human evaluation is a strong way to judge response quality and safety", "correct": true },
+        { "id": "q4_b", "text": "ROUGE is commonly used for summarisation and BLEU for translation", "correct": true },
+        { "id": "q4_c", "text": "For most needs, prefer prompt engineering and RAG before fine-tuning", "correct": true },
+        { "id": "q4_d", "text": "Fine-tuning is always cheaper and simpler than RAG", "correct": false }
+      ],
+      "feedback": "Human eval and metrics like ROUGE/BLEU help judge output; prompt engineering and RAG are usually cheaper first steps than fine-tuning."
+    }
+  ]
+}

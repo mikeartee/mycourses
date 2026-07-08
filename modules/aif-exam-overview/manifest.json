@@ -1,0 +1,41 @@
+{
+  "id": "aif-exam-overview",
+  "title": "The AIF-C01 Exam: Format, Domains, and the AWS AI Landscape",
+  "description": "How the exam is structured, what the five domains weigh, and a map of the AWS AI and ML services you'll be tested on.",
+  "lessons": [
+    {
+      "id": "exam-format",
+      "title": "Exam Format and Scoring",
+      "type": "content",
+      "markdownPath": "exam-format.md",
+      "objectives": [
+        "Describe the exam's question count, time limit, and cost",
+        "Recognise all four question types, including ordering and matching",
+        "State the passing score and how compensatory scoring works"
+      ]
+    },
+    {
+      "id": "domains-and-weighting",
+      "title": "The Five Domains and Their Weighting",
+      "type": "content",
+      "markdownPath": "domains-and-weighting.md",
+      "objectives": [
+        "Name the five exam domains and their weightings",
+        "See why generative AI and foundation models dominate the exam",
+        "Prioritise study time by domain weight"
+      ]
+    },
+    {
+      "id": "ai-on-aws-overview",
+      "title": "The AWS AI and ML Service Landscape",
+      "type": "content",
+      "markdownPath": "ai-on-aws-overview.md",
+      "objectives": [
+        "Place AWS AI offerings into three layers: AI services, Bedrock, and SageMaker",
+        "Say what Amazon Bedrock, SageMaker, and Amazon Q are each for",
+        "Choose a pre-trained AI service over custom ML when it fits"
+      ]
+    },
+    { "id": "quiz", "title": "Exam Overview Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}

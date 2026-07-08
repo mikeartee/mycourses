@@ -1,0 +1,30 @@
+{
+  "id": "aif-responsible-ai",
+  "title": "Domain 4: Guidelines for Responsible AI (14%)",
+  "description": "The principles of responsible AI, fairness, bias, transparency, explainability, and the AWS tools that help you uphold them.",
+  "lessons": [
+    {
+      "id": "responsible-ai-principles",
+      "title": "Principles of Responsible AI",
+      "type": "content",
+      "markdownPath": "responsible-ai-principles.md",
+      "objectives": [
+        "Name the core dimensions of responsible AI",
+        "Distinguish bias, fairness, transparency, and explainability",
+        "Recognise responsible-AI risks in a scenario"
+      ]
+    },
+    {
+      "id": "responsible-ai-on-aws",
+      "title": "Responsible AI Tools on AWS",
+      "type": "content",
+      "markdownPath": "responsible-ai-on-aws.md",
+      "objectives": [
+        "Match AWS tools to responsible-AI goals (SageMaker Clarify, Model Monitor, Bedrock Guardrails)",
+        "Explain AI Service Cards and human review with Amazon A2I",
+        "Choose the right tool to detect bias or filter unsafe output"
+      ]
+    },
+    { "id": "quiz", "title": "Responsible AI Quiz", "type": "quiz", "quizPath": "quiz.json" }
+  ]
+}
